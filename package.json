@@ -1,0 +1,10 @@
+{
+  "name": "storm-access",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "GPL-3.0-or-later",
+  "private": true,
+  "devDependencies": {
+    "web-ext": "^7.5.0"
+  }
+}
