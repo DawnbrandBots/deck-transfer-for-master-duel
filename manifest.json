@@ -2,7 +2,7 @@
     "name": "Deck transfer for Yu-Gi-Oh! Master Duel",
     "description": "Import Yu-Gi-Oh! decks in YDK format and YDKE URLs into Master Duel and Neuron via Konami's official card database.",
     "manifest_version": 2,
-    "version": "0.1.0",
+    "version": "1.0.0",
     "author": "Kevin Lu",
     "homepage_url": "https://github.com/DawnbrandBots",
     "content_scripts": [
@@ -18,5 +18,9 @@
     "permissions": [
         "clipboardRead",
         "https://db.ygoprodeck.com/api/v7/cardinfo.php"
-    ]
+    ],
+    "icons": {
+      "48": "icon/48.png",
+      "96": "icon/96.png"
+    }
 }

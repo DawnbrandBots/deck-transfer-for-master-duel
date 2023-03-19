@@ -1,7 +1,7 @@
 # Deck transfer for Yu-Gi-Oh! Master Duel and Neuron, privacy policy
 
-Deck transfer for Yu-Gi-Oh! Master Duel and Neuron does not collect any data
-about your use of extension.
+Deck transfer for Yu-Gi-Oh! Master Duel and Neuron itself does not collect any data
+about your use of the extension.
 
 The official database created by Konami Digital Entertainment is https://www.db.yugioh-card.com/yugiohdb/.
 This extension requires access to the deck pages of the official database in

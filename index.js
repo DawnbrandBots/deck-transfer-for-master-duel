@@ -8,8 +8,8 @@
 // @match        https://www.db.yugioh-card.com/yugiohdb/member_deck.action*
 // @match        *://*.ygoprodeck.com/*
 // @inject-into  content
-// @version      0.1.0
-// @updateURL    https://raw.githubusercontent.com/DawnbrandBots/storm-access/release/index.user.js
+// @version      1.0.0
+// @updateURL    https://dawnbrandbots.github.io/deck-transfer-for-master-duel/storm-access.user.js
 // ==/UserScript==
 
 function createButton(id, label, orn) {
@@ -248,7 +248,7 @@ function ydkToTypedDeck(ydk) {
 if (location.hostname.endsWith("ygoprodeck.com")) {
     const signal = document.createElement("span");
     signal.id = "access-integration";
-    signal.dataset.version = "0.0.1-safari";
+    signal.dataset.version = "1.0.0-safari";
     signal.style.display = "none";
     document.body.appendChild(signal);
 }

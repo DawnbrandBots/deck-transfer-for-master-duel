@@ -1,4 +1,4 @@
-# Deck transfer for Yu-Gi-Oh! Master Duel and Neuron
+# ![Icon](./icon/48.png) Deck transfer for Yu-Gi-Oh! Master Duel and Neuron
 
 PLACEHOLDER FOR ICONS: Firefox | Chrome | Edge | Opera | Safari | iOS | Android
 
@@ -49,6 +49,9 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ```
+
+Icon copyright (C) 2023 WolfOfWolves, used with permission.
+Icon is NOT covered under the GPL terms. All rights reserved.
 
 ## Disclaimer
 
