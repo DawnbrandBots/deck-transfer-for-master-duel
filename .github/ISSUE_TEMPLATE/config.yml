@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: ❓ Help and support, feature requests
+    url: https://github.com/DawnbrandBots/deck-transfer-for-master-duel/discussions
+    about: Please use GitHub Discussions as a forum. This issue tracker is only for formatted reports.

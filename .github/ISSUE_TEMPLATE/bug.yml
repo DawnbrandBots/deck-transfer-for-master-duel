@@ -1,0 +1,54 @@
+name: 🐛 Bug report
+description: Report incorrect or unexpected behaviour.
+labels: bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please follow the template.  If you don't, your issue may be closed.
+        Make sure to search existing issues first to avoid creating duplicates.
+        Code of conduct: https://github.com/DawnbrandBots/.github/blob/main/CODE_OF_CONDUCT.md
+
+        Have a question?  This is not the right place for general support or feature requests.
+        Please use GitHub Discussions ➡️ https://github.com/DawnbrandBots/deck-transfer-for-master-duel/discussions
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      description: |
+        A clear and concise description of what actually happened.
+
+        Tip: You can attach screenshots by clicking this area to highlight it and then dragging the images into it.
+      placeholder: |
+        1. do thing
+        2. observe incorrect or unexpected behaviour
+
+        screenshots
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: A clear and concise description of what you expected to happen.
+      placeholder: |
+        1. do thing
+        2. what should have happened
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser, and version if you know
+      description: You can usually find the browser version in the help or about menus.
+      placeholder: e.g. Firefox 112.0 (64-bit) | Chrome 111.0
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system and version
+      description: What platform are you using?
+      placeholder: e.g. Windows 10 | macOS 13 | iOS 16 | Android 13
+    validations:
+      required: true
