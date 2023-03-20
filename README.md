@@ -20,9 +20,9 @@ but now with this browser extension, you can bring your decks in commonly-used
 deck formats directly into the official [Yu-Gi-Oh! Master Duel](https://www.konami.com/yugioh/masterduel/) video game
 and [Neuron duel assistant phone app](https://www.konami.com/yugioh/neuron/en/).
 
-[
-    ![Video demonstration](https://markdown-videos.deta.dev/youtube/ImBRD6fM5Og)
-](https://www.youtube.com/watch?v=ImBRD6fM5Og&utm_source=github "Video demonstration")
+<a href="https://www.youtube.com/watch?v=ImBRD6fM5Og&utm_source=github" title="Video demonstration">
+    <img width="100%" src="https://markdown-videos.deta.dev/youtube/ImBRD6fM5Og" alt="Video demonstration" />
+</a>
 
 <!-- alternative thumbnail: https://yt-embed.live/embed?v=ImBRD6fM5Og -->
 
@@ -46,7 +46,10 @@ This is found in the hamburger menu as "Data Transfer", or "Data Transfer" in th
 
 Follow the instructions to create or log in with your Konami ID.
 Your Konami ID must be associated with a Card Game ID.
-After data transfer is set up, make sure you can log into [Konami's official card database](https://www.db.yugioh-card.com/yugiohdb/?request_locale=en)
+
+After data transfer is set up, the card database button in the top-right of the deck screen should show the decks from your official database account.
+Furthermore, you should see the export button become available when you view your decks.
+Make sure you can log into [Konami's official card database](https://www.db.yugioh-card.com/yugiohdb/?request_locale=en)
 and access "My Deck" on the website.
 
 If your Konami ID does not have a Card Game ID, you can try logging into your Konami ID in Neuron.
