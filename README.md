@@ -2,7 +2,12 @@
 
 [
     ![Get the Firefox add-on](https://extensionworkshop.com/assets/img/documentation/publish/get-the-addon-178x60px.dad84b42.png)
-](https://addons.mozilla.org/en-CA/firefox/addon/deck-transfer-for-master-duel/?utm_source=github&utm_campaign=readme "Get the Firefox add-on")
+](https://addons.mozilla.org/firefox/addon/deck-transfer-for-master-duel/?utm_source=github&utm_campaign=readme "Get the Firefox add-on")
+<!--
+<a href="https://addons.opera.com/extensions/details/deck-transfer-for-yu-gi-oh-master-duel-and-neuron/?utm_source=github&utm_campaign=readme" title="Get the Opera add-on">
+    <img height="58" src="https://dev.opera.com/extensions/branding-guidelines/addons_206x58_en@2x.png" alt="Get it from Opera add-ons" />
+</a>
+-->
 &nbsp;
 <a href="#installing-on-safari" title="Install on Safari">
     <img height="64" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Safari_browser_logo.svg/234px-Safari_browser_logo.svg.png" alt="Safari" />
@@ -14,6 +19,8 @@
 
 Import Yu-Gi-Oh! decks in YDK format and YDKE URLs into Master Duel and Neuron via
 Konami's official card database. Directly import decks from [YGOPRODECK](https://ygoprodeck.com) and other communities.
+
+**Chrome Web Store**: pending review. **Opera add-ons**: pending review, [available for Beta/Developer](https://addons.opera.com/extensions/details/deck-transfer-for-yu-gi-oh-master-duel-and-neuron/?utm_source=github&utm_campaign=readme).
 
 Konami's official products have never interoperated with community resources,
 but now with this browser extension, you can bring your decks in commonly-used
