@@ -14,7 +14,7 @@
 
 **Screenshots:** [demo.png](./demo.png)
 
-**Extension video URL:** https://www.youtube.com/watch?v=ImBRD6fM5Og
+**Extension video URL:** https://www.youtube.com/watch?v=ImBRD6fM5Og&utm_source=opera
 
 ## Translations
 

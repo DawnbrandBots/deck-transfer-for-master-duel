@@ -10,7 +10,7 @@
 
 Injects buttons into <a href="https://www.db.yugioh-card.com/yugiohdb/?request_locale=en">Konami's official database</a> deck editor that import decks from community sources like <a href="https://ygoprodeck.com">YGOPRODECK</a>.
 
-Instructions for Master Duel (<a href="https://www.youtube.com/watch?v=ImBRD6fM5Og">demo video</a>):
+Instructions for Master Duel (<a href="https://www.youtube.com/watch?v=ImBRD6fM5Og&utm_source=firefox">demo video</a>):
 
 <ol>
 <li>Link your Master Duel account to a Konami ID. You should be able to export your decks to your official database account in the view deck screen.</li>

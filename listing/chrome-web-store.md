@@ -21,7 +21,7 @@ This project is not produced by, endorsed by, supported by, or affiliated with a
 
 **Category:** Fun
 
-**Global promo video:** https://www.youtube.com/watch?v=ImBRD6fM5Og
+**Global promo video:** https://www.youtube.com/watch?v=ImBRD6fM5Og&utm_source=chrome
 
 **Screenshots:** [demo.png](./demo.png)
 

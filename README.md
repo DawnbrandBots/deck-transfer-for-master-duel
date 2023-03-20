@@ -1,31 +1,76 @@
 # ![Icon](./icon/48.png) Deck transfer for Yu-Gi-Oh! Master Duel and Neuron
 
-PLACEHOLDER FOR ICONS: Firefox | Chrome | Edge | Opera | Safari | iOS | Android
+[
+    ![Get the Firefox add-on](https://extensionworkshop.com/assets/img/documentation/publish/get-the-addon-178x60px.dad84b42.png)
+](https://addons.mozilla.org/en-CA/firefox/addon/deck-transfer-for-master-duel/?utm_source=github&utm_campaign=readme "Get the Firefox add-on")
+&nbsp;
+<a href="#installing-on-safari" title="Install on Safari">
+    <img height="64" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Safari_browser_logo.svg/234px-Safari_browser_logo.svg.png" alt="Safari" />
+</a>
+&nbsp;
+<a href="#installing-on-android" title="Install on Android">
+    <img height="64" src="https://developer.android.com/static/images/brand/Android_Robot.png" alt="Android" />
+</a>
 
 Import Yu-Gi-Oh! decks in YDK format and YDKE URLs into Master Duel and Neuron via
-Konami's official card database. Directly import decks from YGOPRODECK and other communities.
+Konami's official card database. Directly import decks from [YGOPRODECK](https://ygoprodeck.com) and other communities.
 
-1. Install for your browser of choice.
-1. Link your Master Duel account to a Konami ID. You should be able to export your decks to your official database account in the view deck screen.
-1. Log into the official card database at https://www.db.yugioh-card.com/yugiohdb/?request_locale=en.
-1. Select "My Deck", then add a deck or edit any deck.
+Konami's official products have never interoperated with community resources,
+but now with this browser extension, you can bring your decks in commonly-used
+deck formats directly into the official [Yu-Gi-Oh! Master Duel](https://www.konami.com/yugioh/masterduel/) video game
+and [Neuron duel assistant phone app](https://www.konami.com/yugioh/neuron/en/).
+
+[
+    ![Video demonstration](https://markdown-videos.deta.dev/youtube/ImBRD6fM5Og)
+](https://www.youtube.com/watch?v=ImBRD6fM5Og&utm_source=github "Video demonstration")
+
+<!-- alternative thumbnail: https://yt-embed.live/embed?v=ImBRD6fM5Og -->
+
+1. Install this extension for your browser of choice with the links above.
+1. Link your Master Duel account or Neuron app to a Konami ID. You should be able to export your decks to your official database account in the view deck screen. [See below for further explanation.](#linking-master-duel-to-the-official-database)
+1. Log into the [English official card database](https://www.db.yugioh-card.com/yugiohdb/?request_locale=en).
+1. Select "My Deck", then add a deck or edit any deck. On the deck editor page, you should see four new buttons injected by this extension:
+   ![Screenshot of edit deck page with new buttons](./listing/demo.png "Four new buttons injected in the bottom row")
+1. Export a deck from [YGOPRODECK](https://ygoprodeck.com) or other sources as a YDKE URL or a YDK file.
 1. Use the buttons to import your deck and save.
-1. Check in-game for your database decks and copy!
+1. Check in-game for your database decks and copy to your in-game decks! [Screenshot of where the import button is?]
 
-## Safari on macOS and iOS
+## Linking Master Duel to the official database
+
+Link your Master Duel account to a Konami ID via the data transfer feature.
+This is found in the hamburger menu as "Data Transfer", or "Data Transfer" in the title screen.
+
+![Title screen](./docs/title-screen.jpg "Title screen on PlayStation 5")
+
+![Menu item](./docs/data-transfer-menu.jpg "Menu item on PlayStation 5")
+
+Follow the instructions to create or log in with your Konami ID.
+Your Konami ID must be associated with a Card Game ID.
+After data transfer is set up, make sure you can log into [Konami's official card database](https://www.db.yugioh-card.com/yugiohdb/?request_locale=en)
+and access "My Deck" on the website.
+
+If your Konami ID does not have a Card Game ID, you can try logging into your Konami ID in Neuron.
+
+## Installing on Safari
+
+Compatible with both macOS and iOS, if Userscripts is supported!
 
 1. Install [Userscripts](https://apps.apple.com/app/apple-store/id1463298887) from the App Store.
 1. [Enable Userscripts](https://github.com/quoid/userscripts/#usage) (iOS) following its instructions.
-1. Download our userscript to your folder for userscripts.
+1. [Download our userscript](https://dawnbrandbots.github.io/deck-transfer-for-master-duel/storm-access.user.js) to your folder for userscripts.
 1. Check if it is working on YGOPRODECK (dedicated guide page TBD).
 
-## Android browsers
+## Installing on Android
 
 Unfortunately, most Android browsers do not support extensions.
 
-Firefox Beta and Nightly support extensions. Instructions TBD.
+Firefox Beta supports installing extensions beyond the recommended list. If you are interested,
+you can follow the same instructions as [Indie Wiki Buddy](https://getindie.wiki/firefox-mobile/?utm_source=dawnbrand)
+to set up. You can either create your own collection or use
+collection owner [`17816848`](https://addons.mozilla.org/en-CA/firefox/collections/17816848/deck-transfer-for-master-duel/)
+and collection name `deck-transfer-for-master-duel`.
 
-The only relevant Chromium browsers that support extensions are Kiwi and Samsung on application.
+Kiwi Browser supports Chrome extensions, but I have not tested or used this browser.
 
 ## Privacy
 
