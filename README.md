@@ -3,11 +3,18 @@
 [
     ![Get the Firefox add-on](https://extensionworkshop.com/assets/img/documentation/publish/get-the-addon-178x60px.dad84b42.png)
 ](https://addons.mozilla.org/firefox/addon/deck-transfer-for-master-duel/?utm_source=github&utm_campaign=readme "Get the Firefox add-on")
+[
+    ![Available in the Chrome Web Store](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png)
+](https://chrome.google.com/webstore/detail/lgcpomfflpfipndmldmgblhpbnnfidgk?utm_source=github&utm_campaign=readme "Get the Chromium add-on")
 <!--
 <a href="https://addons.opera.com/extensions/details/deck-transfer-for-yu-gi-oh-master-duel-and-neuron/?utm_source=github&utm_campaign=readme" title="Get the Opera add-on">
     <img height="58" src="https://dev.opera.com/extensions/branding-guidelines/addons_206x58_en@2x.png" alt="Get it from Opera add-ons" />
 </a>
 -->
+&nbsp;
+<a href="https://chrome.google.com/webstore/detail/lgcpomfflpfipndmldmgblhpbnnfidgk?utm_source=github&utm_campaign=readme-edge" title="Install for Microsoft Edge from the Chrome Web Store">
+    <img height="64" src="https://raw.githubusercontent.com/MicrosoftEdge/Demos/9e91627ea7f13d7275b9c11d94322ecfaf5d6d28/shared/img/logo1024.png" alt="Microsoft Edge" />
+</a>
 &nbsp;
 <a href="#installing-on-safari" title="Install on Safari">
     <img height="64" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Safari_browser_logo.svg/234px-Safari_browser_logo.svg.png" alt="Safari" />
@@ -20,7 +27,7 @@
 Import Yu-Gi-Oh! decks in YDK format and YDKE URLs into Master Duel and Neuron via
 Konami's official card database. Directly import decks from [YGOPRODECK](https://ygoprodeck.com) and other communities.
 
-**Chrome Web Store**: pending review. **Opera add-ons**: pending review, [available for Beta/Developer](https://addons.opera.com/extensions/details/deck-transfer-for-yu-gi-oh-master-duel-and-neuron/?utm_source=github&utm_campaign=readme).
+**Opera add-ons**: pending review, [available for Beta/Developer](https://addons.opera.com/extensions/details/deck-transfer-for-yu-gi-oh-master-duel-and-neuron/?utm_source=github&utm_campaign=readme). Use the Chrome Web Store version.
 
 Konami's official products have never interoperated with community resources,
 but now with this browser extension, you can bring your decks in commonly-used
@@ -33,14 +40,14 @@ and [Neuron duel assistant phone app](https://www.konami.com/yugioh/neuron/en/).
 
 <!-- alternative thumbnail: https://yt-embed.live/embed?v=ImBRD6fM5Og -->
 
-1. Install this extension for your browser of choice with the links above.
+1. Install this extension for your browser of choice with the links above. [Check if it is working on YGOPRODECK](https://ygoprodeck.com/decks/transfer-tool/?utm_source=github&utm_campaign=readme).
 1. Link your Master Duel account or Neuron app to a Konami ID. You should be able to export your decks to your official database account in the view deck screen. [See below for further explanation.](#linking-master-duel-to-the-official-database)
 1. Log into the [English official card database](https://www.db.yugioh-card.com/yugiohdb/?request_locale=en).
 1. Select "My Deck", then add a deck or edit any deck. On the deck editor page, you should see four new buttons injected by this extension:
    ![Screenshot of edit deck page with new buttons](./listing/demo.png "Four new buttons injected in the bottom row")
 1. Export a deck from [YGOPRODECK](https://ygoprodeck.com) or other sources as a YDKE URL or a YDK file.
 1. Use the buttons to import your deck and save.
-1. Check in-game for your database decks and copy to your in-game decks! [Screenshot of where the import button is?]
+1. Check in-game for your database decks and copy to your in-game decks! <!-- Screenshot of where the import button is? -->
 
 ## Linking Master Duel to the official database
 
@@ -68,7 +75,7 @@ Compatible with both macOS and iOS, if Userscripts is supported!
 1. Install [Userscripts](https://apps.apple.com/app/apple-store/id1463298887) from the App Store.
 1. [Enable Userscripts](https://github.com/quoid/userscripts/#usage) (iOS) following its instructions.
 1. [Download our userscript](https://dawnbrandbots.github.io/deck-transfer-for-master-duel/storm-access.user.js) to your folder for userscripts.
-1. Check if it is working on YGOPRODECK (dedicated guide page TBD).
+1. [Check if it is working on YGOPRODECK](https://ygoprodeck.com/decks/transfer-tool/?utm_source=github&utm_campaign=readme).
 
 ## Installing on Android
 
