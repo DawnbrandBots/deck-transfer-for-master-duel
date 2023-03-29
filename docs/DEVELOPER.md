@@ -1,6 +1,6 @@
 # Installing for developers
 
-[Roadmap (internal)](https://docs.google.com/document/d/1sy-fUxeZQmJxDv1bX13QEcTNK84jYQY7Wp1uMZWoWi8/edit?usp=sharing)
+Make sure to disable any version of the extension installed from extension stores first.
 
 ## Testing on desktop Firefox
 

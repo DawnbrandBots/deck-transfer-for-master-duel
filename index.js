@@ -171,6 +171,83 @@ if (
     });
 }
 
+async function exportTypedDeck() {
+    const imageSets = document.getElementsByClassName("image_set");
+    const deckKonamiIds = { main: [], extra: [], side: [] };
+    for (const imageSet of imageSets) {
+        const key = imageSet.parentNode.id;
+        for (const child of imageSet.children) {
+            if (child.tagName === "A") {
+                const urlParams = new URLSearchParams(child.search);
+                const cid = parseInt(urlParams.get("cid"), 10);
+                if (!isNaN(cid)) {
+                    deckKonamiIds[key].push(cid);
+                } else {
+                    console.warn("Unexpected href for image_set child:", child);
+                }
+            } else {
+                console.warn("Unexpected image_set child:", child);
+            }
+        }
+    }
+    console.log(deckKonamiIds);
+    const ids = new Set([...deckKonamiIds.main, ...deckKonamiIds.extra, ...deckKonamiIds.side]);
+    const parameter = [...ids].join(",");
+    console.log(parameter);
+    const response = await fetch(`https://db.ygoprodeck.com/api/v7/cardinfo.php?utm_source=storm-access&misc=yes&konami_id=${parameter}`);
+    const payload = await response.json();
+    const cards = new Map();
+    for (const card of payload.data) {
+        cards.set(card.misc_info[0].konami_id, card.id);
+    }
+    const deckPasswords = {
+        main: deckKonamiIds.main.map(kid => cards.get(kid)),
+        extra: deckKonamiIds.extra.map(kid => cards.get(kid)),
+        side: deckKonamiIds.side.map(kid => cards.get(kid))
+    };
+    console.log(deckPasswords);
+    return deckPasswords;
+}
+
+if (
+    location.hostname.endsWith("db.yugioh-card.com")  // Official database, branch for userscript
+    && location.search.includes("ope=1")  // View deck page
+) {
+    const ydkButton = createButton("btn_ydk", "Export YDK", false)
+    const ydkeButton = createButton("btn_ydke", "Export YDKE to clipboard", false);
+    const ygoprodeckButton = createButton("btn_ygoprodeck", "Export to YGOPRODECK", false);
+    ygoprodeckButton.href = "https://ygoprodeck.com/deckbuilder/?utm_source=storm-access";
+    ygoprodeckButton.target = "_blank";
+    const row = document.getElementById("bottom_btn_set");
+    row.style.flexWrap = "wrap";
+    row.append(ydkButton, ydkeButton, ygoprodeckButton);
+
+    const showModal = createDialog();
+
+    ydkButton.addEventListener("click", async event => {
+        event.preventDefault();
+        const name = document.querySelector("#broad_title h1").firstChild.textContent.split("\t\t\t").pop();
+        const { main, extra, side } = await exportTypedDeck();
+        const ydk = `# ${name}\n# ${location}\n#main\n${main.join("\n")}\n#extra\n${extra.join("\n")}\n!side\n${side.join("\n")}\n`;
+        console.log(ydk);
+        const blob = new Blob([ydk], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const download = document.createElement("a");
+        download.href = url;
+        download.download = `${name}.ydk`;
+        download.click();
+        URL.revokeObjectURL(url);
+    });
+    ydkeButton.addEventListener("click", async event => {
+        event.preventDefault();
+        const deck = await exportTypedDeck();
+        const url = `ydke://${toBase64(deck.main)}!${toBase64(deck.extra)}!${toBase64(deck.side)}!`;
+        console.log(url);
+        await navigator.clipboard.writeText(url);
+        showModal("Deck copied to clipboard!")
+    });
+}
+
 // ydke.js for web
 function byte(c) { return c.charCodeAt(0); }
 
@@ -193,6 +270,10 @@ function parseURL(ydke) {
         extra: toPasscodes(components[1]),
         side: toPasscodes(components[2])
     };
+}
+
+function toBase64(array) {
+    return btoa(String.fromCharCode(...new Uint8Array(new Uint32Array(array).buffer)));
 }
 // end ydke.js
 
