@@ -213,10 +213,14 @@ if (
     location.hostname.endsWith("db.yugioh-card.com")  // Official database, branch for userscript
     && location.search.includes("ope=1")  // View deck page
 ) {
-    const ydkButton = createButton("btn_ydk", "Export YDK", false)
+    const name = document.querySelector("#broad_title h1").firstChild.textContent.split("\t\t\t").pop();
+    // Cache the deck representation so only one API request is needed and later button presses are more responsive
+    let deck;
+
+    const ydkButton = createButton("btn_ydk", "Export YDK", false);
+    ydkButton.download = `${name}.ydk`;
     const ydkeButton = createButton("btn_ydke", "Export YDKE to clipboard", false);
     const ygoprodeckButton = createButton("btn_ygoprodeck", "Export to YGOPRODECK", false);
-    ygoprodeckButton.href = "https://ygoprodeck.com/deckbuilder/?utm_source=storm-access";
     ygoprodeckButton.target = "_blank";
     const row = document.getElementById("bottom_btn_set");
     row.style.flexWrap = "wrap";
@@ -224,28 +228,45 @@ if (
 
     const showModal = createDialog();
 
-    ydkButton.addEventListener("click", async event => {
+    // The first click constructs the data URL and later clicks do not need to run this event handler
+    async function ydkOnClick(event) {
         event.preventDefault();
-        const name = document.querySelector("#broad_title h1").firstChild.textContent.split("\t\t\t").pop();
-        const { main, extra, side } = await exportTypedDeck();
+        if (!deck) {
+            deck = await exportTypedDeck();
+        }
+        const { main, extra, side } = deck;
         const ydk = `# ${name}\n# ${location}\n#main\n${main.join("\n")}\n#extra\n${extra.join("\n")}\n!side\n${side.join("\n")}\n`;
         console.log(ydk);
         const blob = new Blob([ydk], { type: "text/plain" });
         const url = URL.createObjectURL(blob);
-        const download = document.createElement("a");
-        download.href = url;
-        download.download = `${name}.ydk`;
-        download.click();
-        URL.revokeObjectURL(url);
-    });
+        ydkButton.href = url;
+        ydkButton.removeEventListener("click", ydkOnClick);
+        ydkButton.click();
+    }
+
+    // The first click sets up the hyperlink and later clicks do not need to run this event handler
+    async function ygoprodeckOnClick(event) {
+        event.preventDefault();
+        if (!deck) {
+            deck = await exportTypedDeck();
+        }
+        ygoprodeckButton.href = `https://ygoprodeck.com/deckbuilder/?utm_source=storm-access&ydke=${toBase64(deck.main)}!${toBase64(deck.extra)}!${toBase64(deck.side)}!${encodeURIComponent(name)}`;
+        ygoprodeckButton.removeEventListener("click", ygoprodeckOnClick);
+        ygoprodeckButton.click();
+    }
+
+    ydkButton.addEventListener("click", ydkOnClick);
     ydkeButton.addEventListener("click", async event => {
         event.preventDefault();
-        const deck = await exportTypedDeck();
+        if (!deck) {
+            deck = await exportTypedDeck();
+        }
         const url = `ydke://${toBase64(deck.main)}!${toBase64(deck.extra)}!${toBase64(deck.side)}!`;
         console.log(url);
         await navigator.clipboard.writeText(url);
         showModal("Deck copied to clipboard!")
     });
+    ygoprodeckButton.addEventListener("click", ygoprodeckOnClick);
 }
 
 // ydke.js for web
