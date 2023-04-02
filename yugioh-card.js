@@ -1,17 +1,8 @@
 // Deck transfer for Yu-Gi-Oh! Master Duel and Neuron
 // SPDX-FileCopyrightText: Copyright (C) 2023 Kevin Lu
 // SPDX-Licence-Identifier: GPL-3.0-or-later
-// ==UserScript==
-// @name         Deck transfer for Yu-Gi-Oh! Master Duel and Neuron
-// @description  Import Yu-Gi-Oh! decks in YDK format and YDKE URLs into Master Duel and Neuron via Konami's official card database.
-// @namespace    https://github.com/DawnbrandBots
-// @match        https://www.db.yugioh-card.com/yugiohdb/member_deck.action*
-// @match        *://*.ygoprodeck.com/*
-// @inject-into  content
-// @version      1.0.0
-// @updateURL    https://dawnbrandbots.github.io/deck-transfer-for-master-duel/storm-access.user.js
-// ==/UserScript==
 
+// Shared helpers
 function createButton(id, label, orn) {
     const button = document.createElement("a");
     button.id = id;
@@ -38,7 +29,9 @@ function createDialog() {
         dialog.showModal();
     }
 }
+// End shared helpers
 
+// Deck import section
 async function loadTypedDeck(main, extra, side) {
     const passwords = new Set([...main, ...extra, ...side]);
     const parameter = [...passwords].join(",");
@@ -121,11 +114,8 @@ function createYdkeOnClick(save, showModal) {
     }
 }
 
-if (
-    location.hostname.endsWith("db.yugioh-card.com")  // Official database, branch for userscript
-    && location.search.includes("ope=2")  // Edit deck page
-    && document.body.classList.contains("en")  // Only English supported currently, UI language affects the text fields
-) {
+// Edit deck page, only English supported currently, UI language affects the text fields
+if (location.search.includes("ope=2") && document.body.classList.contains("en")) {
     const ydkeButton = createButton("btn_ydke", "Import YDKE from clipboard", false);
     const ydkeSaveButton = createButton("btn_ydke_save", "Import clipboard and save", true);
     const ydkButton = createButton("btn_ydk", "Import YDK file", false);
@@ -170,7 +160,9 @@ if (
         }
     });
 }
+// End deck import section
 
+// Deck export section
 async function exportTypedDeck() {
     const imageSets = document.getElementsByClassName("image_set");
     const deckKonamiIds = { main: [], extra: [], side: [] };
@@ -209,65 +201,66 @@ async function exportTypedDeck() {
     return deckPasswords;
 }
 
-if (
-    location.hostname.endsWith("db.yugioh-card.com")  // Official database, branch for userscript
-    && location.search.includes("ope=1")  // View deck page
-) {
-    const name = document.querySelector("#broad_title h1").firstChild.textContent.split("\t\t\t").pop();
-    // Cache the deck representation so only one API request is needed and later button presses are more responsive
-    let deck;
+// View deck page
+if (location.search.includes("ope=1")  ) {
+    (function () {
+        const name = document.querySelector("#broad_title h1").firstChild.textContent.split("\t\t\t").pop();
+        // Cache the deck representation so only one API request is needed and later button presses are more responsive
+        let deck;
 
-    const ydkButton = createButton("btn_ydk", "Export YDK", false);
-    ydkButton.download = `${name}.ydk`;
-    const ydkeButton = createButton("btn_ydke", "Export YDKE to clipboard", false);
-    const ygoprodeckButton = createButton("btn_ygoprodeck", "Export to YGOPRODECK", false);
-    ygoprodeckButton.target = "_blank";
-    const row = document.getElementById("bottom_btn_set");
-    row.style.flexWrap = "wrap";
-    row.append(ydkButton, ydkeButton, ygoprodeckButton);
+        const ydkButton = createButton("btn_ydk", "Export YDK", false);
+        ydkButton.download = `${name}.ydk`;
+        const ydkeButton = createButton("btn_ydke", "Export YDKE to clipboard", false);
+        const ygoprodeckButton = createButton("btn_ygoprodeck", "Export to YGOPRODECK", false);
+        ygoprodeckButton.target = "_blank";
+        const row = document.getElementById("bottom_btn_set");
+        row.style.flexWrap = "wrap";
+        row.append(ydkButton, ydkeButton, ygoprodeckButton);
 
-    const showModal = createDialog();
+        const showModal = createDialog();
 
-    // The first click constructs the data URL and later clicks do not need to run this event handler
-    async function ydkOnClick(event) {
-        event.preventDefault();
-        if (!deck) {
-            deck = await exportTypedDeck();
+        // The first click constructs the data URL and later clicks do not need to run this event handler
+        async function ydkOnClick(event) {
+            event.preventDefault();
+            if (!deck) {
+                deck = await exportTypedDeck();
+            }
+            const { main, extra, side } = deck;
+            const ydk = `# ${name}\n# ${location}\n#main\n${main.join("\n")}\n#extra\n${extra.join("\n")}\n!side\n${side.join("\n")}\n`;
+            console.log(ydk);
+            const blob = new Blob([ydk], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+            ydkButton.href = url;
+            ydkButton.removeEventListener("click", ydkOnClick);
+            ydkButton.click();
         }
-        const { main, extra, side } = deck;
-        const ydk = `# ${name}\n# ${location}\n#main\n${main.join("\n")}\n#extra\n${extra.join("\n")}\n!side\n${side.join("\n")}\n`;
-        console.log(ydk);
-        const blob = new Blob([ydk], { type: "text/plain" });
-        const url = URL.createObjectURL(blob);
-        ydkButton.href = url;
-        ydkButton.removeEventListener("click", ydkOnClick);
-        ydkButton.click();
-    }
 
-    // The first click sets up the hyperlink and later clicks do not need to run this event handler
-    async function ygoprodeckOnClick(event) {
-        event.preventDefault();
-        if (!deck) {
-            deck = await exportTypedDeck();
+        // The first click sets up the hyperlink and later clicks do not need to run this event handler
+        async function ygoprodeckOnClick(event) {
+            event.preventDefault();
+            if (!deck) {
+                deck = await exportTypedDeck();
+            }
+            ygoprodeckButton.href = `https://ygoprodeck.com/deckbuilder/?utm_source=storm-access&ydke=${toBase64(deck.main)}!${toBase64(deck.extra)}!${toBase64(deck.side)}!${encodeURIComponent(name)}`;
+            ygoprodeckButton.removeEventListener("click", ygoprodeckOnClick);
+            ygoprodeckButton.click();
         }
-        ygoprodeckButton.href = `https://ygoprodeck.com/deckbuilder/?utm_source=storm-access&ydke=${toBase64(deck.main)}!${toBase64(deck.extra)}!${toBase64(deck.side)}!${encodeURIComponent(name)}`;
-        ygoprodeckButton.removeEventListener("click", ygoprodeckOnClick);
-        ygoprodeckButton.click();
-    }
 
-    ydkButton.addEventListener("click", ydkOnClick);
-    ydkeButton.addEventListener("click", async event => {
-        event.preventDefault();
-        if (!deck) {
-            deck = await exportTypedDeck();
-        }
-        const url = `ydke://${toBase64(deck.main)}!${toBase64(deck.extra)}!${toBase64(deck.side)}!`;
-        console.log(url);
-        await navigator.clipboard.writeText(url);
-        showModal("Deck copied to clipboard!")
-    });
-    ygoprodeckButton.addEventListener("click", ygoprodeckOnClick);
+        ydkButton.addEventListener("click", ydkOnClick);
+        ydkeButton.addEventListener("click", async event => {
+            event.preventDefault();
+            if (!deck) {
+                deck = await exportTypedDeck();
+            }
+            const url = `ydke://${toBase64(deck.main)}!${toBase64(deck.extra)}!${toBase64(deck.side)}!`;
+            console.log(url);
+            await navigator.clipboard.writeText(url);
+            showModal("Deck copied to clipboard!")
+        });
+        ygoprodeckButton.addEventListener("click", ygoprodeckOnClick);
+    })();
 }
+// End deck export section
 
 // ydke.js for web
 function byte(c) { return c.charCodeAt(0); }
@@ -345,12 +338,3 @@ function ydkToTypedDeck(ydk) {
 	};
 }
 // end ydk.js
-
-// Basically the same as ./integration.js but for userscript only
-if (location.hostname.endsWith("ygoprodeck.com")) {
-    const signal = document.createElement("span");
-    signal.id = "access-integration";
-    signal.dataset.version = "1.0.0-safari";
-    signal.style.display = "none";
-    document.body.appendChild(signal);
-}

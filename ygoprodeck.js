@@ -3,7 +3,7 @@
 // SPDX-Licence-Identifier: GPL-3.0-or-later
 const signal = document.createElement("span");
 signal.id = "access-integration";
-signal.dataset.version = "1.0.0";
+signal.dataset.version = "1.1.0";
 signal.style.display = "none";
 document.body.appendChild(signal);
 

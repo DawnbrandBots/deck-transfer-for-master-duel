@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-FILES="manifest.json *.js COPYING NOTICE icon"
+FILES="manifest.json yugioh-card.js ygoprodeck.js COPYING NOTICE icon"
 
 zip -r storm-access.zip $FILES
 
