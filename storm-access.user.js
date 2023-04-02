@@ -400,13 +400,8 @@ function ydkToTypedDeck(ydk) {
                         for (const node of mutation.addedNodes) {
                             if (node.nodeName === "BUTTON") {
                                 invoker.disconnect();
-                                console.log("Storm Access: button mounted, Vue app API should be available");
-                                if (yugiohDeckToolApplication.ydkeQueryString) {
-                                    console.log("Storm Access: ydkeQueryString flag detected, not injecting deck");
-                                } else {
-                                    console.log("Storm Access: awaiting Vue app ready event");
-                                    yugiohDeckToolApplication.on("ready", inject);
-                                }
+                                console.log("Storm Access: button mounted, Vue app API should be available, awaiting ready event");
+                                yugiohDeckToolApplication.on("ready", inject);
                                 return;
                             }
                         }
@@ -416,12 +411,8 @@ function ydkToTypedDeck(ydk) {
             console.log("Storm Access: register MutationObserver");
             observer.observe(vueRoot.parentNode, { childList: true, subtree: true });
         } else {
-            if (yugiohDeckToolApplication.ydkeQueryString) {
-                console.log("Storm Access: no #deckToolApplication, ydkeQueryString flag detected, not injecting deck");
-            } else {
-                console.log("Storm Access: no #deckToolApplication, awaiting Vue app ready event");
-                yugiohDeckToolApplication.on("ready", inject);
-            }
+            console.log("Storm Access: no #deckToolApplication, awaiting Vue app ready event");
+            yugiohDeckToolApplication.on("ready", inject);
         }
     })();`;
             document.body.append(script);
