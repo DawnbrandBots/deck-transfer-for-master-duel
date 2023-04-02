@@ -40,11 +40,21 @@ Please make sure you use the English official database for deck import. Language
    1. Import YDK file (different colour from "Save")
    1. Import YDK and save (same colour as "Save")
 
-1. **Given** the extension or userscript is installed and enabled
+1. **Given** the extension or userscript is installed and enabled AND I am logged in to https://www.db.yugioh-card.com
 
    **When** I navigate to [Deck Search](https://www.db.yugioh-card.com/yugiohdb/deck_search.action) on the official database in any language and choose any deck
 
    **Then** in the bar containing the "Copy" button, there are three additional buttons of the same colour in this order:
+
+   1. Export YDK
+   1. Export YDKE to clipboard
+   1. Export to YGOPRODECK
+
+1. **Given** the extension or userscript is installed and enabled AND I am NOT logged in to https://www.db.yugioh-card.com
+
+   **When** I navigate to [Deck Search](https://www.db.yugioh-card.com/yugiohdb/deck_search.action) on the official database in any language and choose any deck
+
+   **Then** there are three buttons of the same colour in this order in a bar below the deck comment:
 
    1. Export YDK
    1. Export YDKE to clipboard

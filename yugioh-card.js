@@ -213,7 +213,13 @@ if (location.search.includes("ope=1")  ) {
         const ydkeButton = createButton("btn_ydke", "Export YDKE to clipboard", false);
         const ygoprodeckButton = createButton("btn_ygoprodeck", "Export to YGOPRODECK", false);
         ygoprodeckButton.target = "_blank";
-        const row = document.getElementById("bottom_btn_set");
+        let row = document.getElementById("bottom_btn_set");
+        if (!row) {
+            // Not logged in, so the copy button is unavailable and the whole button row is not present
+            row = document.createElement("div");
+            row.id = "bottom_btn_set";
+            document.getElementById("deck_header").append(row);
+        }
         row.style.flexWrap = "wrap";
         row.append(ydkButton, ydkeButton, ygoprodeckButton);
 

@@ -133,7 +133,13 @@ if (location.search.includes("ope=2") && document.body.classList.contains("en"))
     const ydkeSaveButton = createButton("btn_ydke_save", "Import clipboard and save", true);
     const ydkButton = createButton("btn_ydk", "Import YDK file", false);
     const ydkSaveButton = createButton("btn_ydk_save", "Import YDK and save", true);
-    const row = document.getElementById("bottom_btn_set");
+    let row = document.getElementById("bottom_btn_set");
+    if (!row) {
+        // Not logged in, so the copy button is unavailable and the whole button row is not present
+        row = document.createElement("div");
+        row.id = "bottom_btn_set";
+        document.getElementById("deck_header").append(row);
+    }
     row.style.flexWrap = "wrap";
     row.prepend(ydkeButton, ydkeSaveButton, ydkButton, ydkSaveButton);
 
