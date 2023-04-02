@@ -5,6 +5,21 @@
   "license": "GPL-3.0-or-later",
   "private": true,
   "devDependencies": {
+    "eslint": "^8.37.0",
     "web-ext": "^7.5.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parserOptions": {
+      "ecmaVersion": 2017
+    },
+    "env": {
+      "browser": true,
+      "es6": true,
+      "webextensions": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ]
   }
 }
