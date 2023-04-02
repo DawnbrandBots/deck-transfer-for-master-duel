@@ -7,13 +7,13 @@ selecting an existing deck or clicking "Add a Deck", and then clicking the "Edit
 The URL starts with https://www.db.yugioh-card.com/yugiohdb/member_deck.action?ope=2
 and the page contains text boxes to fill out with card names.
 
-Please make sure you use the English official database. Language select is in the top-right corner.
+Please make sure you use the English official database for deck import. Language select is in the top-right corner.
 
 ## Smoke tests
 
 1. **Given** the extension is disabled or NOT installed
 
-   **When** I navigate to the _TBD YGOPRODECK PAGE FOR THE EXTENSION_
+   **When** I navigate to https://ygoprodeck.com/decks/transfer-tool/
 
    **Then** the page says the extension is NOT detected
 
@@ -25,7 +25,7 @@ Please make sure you use the English official database. Language select is in th
 
 1. **Given** the extension or userscript is installed and enabled
 
-   **When** I navigate to the _YGOPRODECK PAGE FOR THE EXTENSION_
+   **When** I navigate to the https://ygoprodeck.com/decks/transfer-tool/
 
    **Then** the page says the extension is detected
 
@@ -39,6 +39,16 @@ Please make sure you use the English official database. Language select is in th
    1. Import from clipboard and save (same colour as "Save")
    1. Import YDK file (different colour from "Save")
    1. Import YDK and save (same colour as "Save")
+
+1. **Given** the extension or userscript is installed and enabled
+
+   **When** I navigate to [Deck Search](https://www.db.yugioh-card.com/yugiohdb/deck_search.action) on the official database in any language and choose any deck
+
+   **Then** in the bar containing the "Copy" button, there are three additional buttons of the same colour in this order:
+
+   1. Export YDK
+   1. Export YDKE to clipboard
+   1. Export to YGOPRODECK
 
 ## Import YDKE URL functional tests
 
@@ -95,3 +105,46 @@ The extension should be installed and enabled.
    **When** I click "Import YDK file" OR "Import YDK and save" on an official database edit deck page and upload that file
 
    **Then** the text boxes on the page are unchanged AND a pop-up appears with an error message, which can be closed by clicking "OK"
+
+## Export functional tests
+
+The extension should be installed and enabled. To view a public deck, navigate to [Deck Search](https://www.db.yugioh-card.com/yugiohdb/deck_search.action)
+on the official database and choose any deck. You do not have to be logged in for this. To view a private deck, log in
+and navigate to My Deck as before and choose any deck. Any official database language setting will work for these, but
+the injected buttons may not have translated labels.
+
+1. **Given** I am viewing a public deck on the official database
+
+   **When** I click "Export YDK"
+
+   **Then** I am prompted to download a YDK file whose name matches the name of deck AND the contents of the YDK file match the shown deck
+
+1. **Given** I am viewing a public deck on the official database
+
+   **When** I click "Export YDKE to clipboard"
+
+   **Then** a pop-up appears saying "Deck copied to clipboard!" AND when I paste the YDKE URL on my clipboard, it matches the shown deck
+
+1. **Given** I am viewing a public deck on the official database
+
+   **When** I click "Export to YGOPRODECK"
+
+   **Then** the YGOPRODECK [deck builder](https://ygoprodeck.com/deckbuilder/) is opened and loaded with the same deck and name
+
+1. **Given** I am viewing a private deck on the official database
+
+   **When** I click "Export YDK"
+
+   **Then** I am prompted to download a YDK file whose name matches the name of deck AND the contents of the YDK file match the shown deck
+
+1. **Given** I am viewing a private deck on the official database
+
+   **When** I click "Export YDKE to clipboard"
+
+   **Then** a pop-up appears saying "Deck copied to clipboard!" AND when I paste the YDKE URL on my clipboard, it matches the shown deck
+
+1. **Given** I am viewing a private deck on the official database
+
+   **When** I click "Export to YGOPRODECK"
+
+   **Then** the YGOPRODECK [deck builder](https://ygoprodeck.com/deckbuilder/) is opened and loaded with the same deck and name
