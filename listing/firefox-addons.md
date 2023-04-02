@@ -40,6 +40,6 @@ This project is not produced by, endorsed by, supported by, or affiliated with a
 
 **Notes to Reviewer:**
 
-**Screenshot:"** [demo.png](./demo.png)
+**Screenshot:"** [demo-import.png](./demo-import.png)
 
 **Screenshot caption:** The four import buttons injected into Konami's official database deck editor.

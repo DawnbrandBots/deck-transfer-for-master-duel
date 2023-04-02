@@ -26,8 +26,6 @@
 Import Yu-Gi-Oh! decks in YDK format and YDKE URLs into Master Duel and Neuron via
 Konami's official card database. Directly import decks from [YGOPRODECK](https://ygoprodeck.com) and other communities.
 
-**Opera add-ons**: pending review, [available for Beta/Developer](https://addons.opera.com/extensions/details/deck-transfer-for-yu-gi-oh-master-duel-and-neuron/?utm_source=github&utm_campaign=readme). Use the Chrome Web Store version.
-
 Konami's official products have never interoperated with community resources,
 but now with this browser extension, you can bring your decks in commonly-used
 deck formats directly into the official [Yu-Gi-Oh! Master Duel](https://www.konami.com/yugioh/masterduel/) video game
@@ -43,7 +41,7 @@ and [Neuron duel assistant phone app](https://www.konami.com/yugioh/neuron/en/).
 1. Link your Master Duel account or Neuron app to a Konami ID. You should be able to export your decks to your official database account in the view deck screen. [See below for further explanation.](#linking-master-duel-to-the-official-database)
 1. Log into the [English official card database](https://www.db.yugioh-card.com/yugiohdb/?request_locale=en).
 1. Select "My Deck", then add a deck or edit any deck. On the deck editor page, you should see four new buttons injected by this extension:
-   ![Screenshot of edit deck page with new buttons](./listing/demo.png "Four new buttons injected in the bottom row")
+   ![Screenshot of edit deck page with new buttons](./listing/demo-import.png "Four new buttons injected in the bottom row")
 1. Export a deck from [YGOPRODECK](https://ygoprodeck.com) or other sources as a YDKE URL or a YDK file.
 1. Use the buttons to import your deck and save.
 1. Check in-game for your database decks and copy to your in-game decks! <!-- Screenshot of where the import button is? -->

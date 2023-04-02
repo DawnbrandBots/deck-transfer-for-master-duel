@@ -23,7 +23,7 @@ This project is not produced by, endorsed by, supported by, or affiliated with a
 
 **Global promo video:** https://www.youtube.com/watch?v=ImBRD6fM5Og&utm_source=chrome
 
-**Screenshots:** [demo.png](./demo.png)
+**Screenshots:** [demo-import.png](./demo-import.png)
 
 **Homepage URL**: https://github.com/DawnbrandBots/deck-transfer-for-master-duel
 

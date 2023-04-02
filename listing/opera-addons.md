@@ -12,7 +12,7 @@
 
 ## Media
 
-**Screenshots:** [demo.png](./demo.png)
+**Screenshots:** [demo-import.png](./demo-import.png)
 
 **Extension video URL:** https://www.youtube.com/watch?v=ImBRD6fM5Og&utm_source=opera
 
