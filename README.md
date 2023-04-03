@@ -23,13 +23,17 @@
     <img height="64" src="https://developer.android.com/static/images/brand/Android_Robot.png" alt="Android" />
 </a>
 
-Import Yu-Gi-Oh! decks in YDK format and YDKE URLs into Master Duel and Neuron via
-Konami's official card database. Directly import decks from [YGOPRODECK](https://ygoprodeck.com) and other communities.
+[Import](#importing) and [export](#exporting) Yu-Gi-Oh! decks from Master Duel and Neuron in YDK format and YDKE URLs via Konami's official card database.
+Directly import decks from [YGOPRODECK](https://ygoprodeck.com) and other communities.
 
 Konami's official products have never interoperated with community resources,
 but now with this browser extension, you can bring your decks in commonly-used
 deck formats directly into the official [Yu-Gi-Oh! Master Duel](https://www.konami.com/yugioh/masterduel/) video game
 and [Neuron duel assistant phone app](https://www.konami.com/yugioh/neuron/en/).
+You can also [download any deck](#downloading-public-decks) from the official card database, including your
+Master Duel and Neuron decks, and share directly to YGOPRODECK.
+
+## Importing
 
 <a href="https://www.youtube.com/watch?v=ImBRD6fM5Og&utm_source=github" title="Video demonstration">
     <img width="100%" src="https://markdown-videos.deta.dev/youtube/ImBRD6fM5Og" alt="Video demonstration" />
@@ -45,6 +49,32 @@ and [Neuron duel assistant phone app](https://www.konami.com/yugioh/neuron/en/).
 1. Export a deck from [YGOPRODECK](https://ygoprodeck.com) or other sources as a YDKE URL or a YDK file.
 1. Use the buttons to import your deck and save.
 1. Check in-game for your database decks and copy to your in-game decks! <!-- Screenshot of where the import button is? -->
+
+## Downloading public decks
+
+1. Install this extension for your browser of choice with the links above. [Check if it is working on YGOPRODECK](https://ygoprodeck.com/decks/transfer-tool/?utm_source=github&utm_campaign=readme).
+1. Browse ["Deck Search"](https://www.db.yugioh-card.com/yugiohdb/deck_search.action?request_locale=en) on the official database in any language.
+1. When you choose a deck, you should see three new buttons injected by this extension: ![Screenshot of view deck page with new buttons](./listing/demo-export.png "Three new export buttons, available even if not logged in")
+1. Use the buttons to export and download the deck.
+
+Note: if you choose a deck containing cards not yet released in the current language region (e.g. OCG-only cards while viewing in English),
+those cards will be missing from the display and the exports. In this case, try switching the database language using the
+language select is in the top-right corner (e.g. switch to Japanese for OCG-only cards).
+
+## Exporting
+
+1. Install this extension for your browser of choice with the links above. [Check if it is working on YGOPRODECK](https://ygoprodeck.com/decks/transfer-tool/?utm_source=github&utm_campaign=readme).
+1. Link your Master Duel account or Neuron app to a Konami ID. [See below for further explanation.](#linking-master-duel-to-the-official-database)
+1. Export your Master Duel deck to your official database account in the view deck screen.
+   ![Screenshot of view deck screen](./docs/view-deck-screen.jpg "View deck screen on PlayStation 5. Export button is enabled")
+   ![Screenshot of export deck prompt](./docs/view-deck-screen-export-prompt.jpg "Prompt when export button is pressed")
+1. Log into the [official card database](https://www.db.yugioh-card.com/yugiohdb/?request_locale=en) in any language.
+1. Select "My Deck" and find the exported Master Duel deck. On its page, you should see three new buttons injected by this extension, like with [public decks](#downloading-public-decks).
+1. Use the buttons to export and download the deck.
+
+Note: if your deck contains cards not yet released in the current language region (e.g. cards that debut internationally in Master Duel),
+those cards will be missing from the display and the exports. In this case, try switching the database language using the
+language select is in the top-right corner (e.g. switch to Japanese).
 
 ## Linking Master Duel to the official database
 

@@ -1,6 +1,6 @@
 {
     "name": "Deck transfer for Yu-Gi-Oh! Master Duel",
-    "description": "Import Yu-Gi-Oh! decks in YDK format and YDKE URLs into Master Duel and Neuron via Konami's official card database.",
+    "description": "Import and export Yu-Gi-Oh! decks from Master Duel and Neuron in YDK format and YDKE URLs via Konami's official card database.",
     "manifest_version": 2,
     "version": "1.1.0",
     "author": "Kevin Lu",

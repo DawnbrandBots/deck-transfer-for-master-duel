@@ -2,10 +2,9 @@
 
 **Description (16000 characters):**
 
-Injects buttons into Konami's official database (https://www.db.yugioh-card.com/yugiohdb/?request_locale=en) deck editor that import decks from community sources like https://ygoprodeck.com.
+Injects buttons into Konami's official database (https://www.db.yugioh-card.com/yugiohdb/?request_locale=en) deck editor that import and export decks from community sources like https://ygoprodeck.com. Download any public deck or share your own decks.
 
-Instructions for Master Duel:
-
+Instructions for Master Duel import:
 1. Link your Master Duel account to a Konami ID. You should be able to export your decks to your official database account in the view deck screen.
 2. Log into the English official card database.
 3. Select "My Deck", then add a deck or edit any deck.
@@ -23,7 +22,7 @@ This project is not produced by, endorsed by, supported by, or affiliated with a
 
 **Global promo video:** https://www.youtube.com/watch?v=ImBRD6fM5Og&utm_source=chrome
 
-**Screenshots:** [demo-import.png](./demo-import.png)
+**Screenshots:** [demo-export.png](./demo-export.png)
 
 **Homepage URL**: https://github.com/DawnbrandBots/deck-transfer-for-master-duel
 
