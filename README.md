@@ -33,6 +33,9 @@ and [Neuron duel assistant phone app](https://www.konami.com/yugioh/neuron/en/).
 You can also [download any deck](#downloading-public-decks) from the official card database, including your
 Master Duel and Neuron decks, and share directly to YGOPRODECK.
 
+**Note**: Opera approves extension updates slower than the Chrome Web Store so far. Opera users may receive new features
+and fixes faster by installing from the Chrome Web Store instead.
+
 ## Importing
 
 <a href="https://www.youtube.com/watch?v=ImBRD6fM5Og&utm_source=github" title="Video demonstration">
