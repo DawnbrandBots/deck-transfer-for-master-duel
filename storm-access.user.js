@@ -1,5 +1,5 @@
 // Deck transfer for Yu-Gi-Oh! Master Duel and Neuron
-// SPDX-FileCopyrightText: Copyright (C) 2023 Kevin Lu
+// SPDX-FileCopyrightText: Copyright (C) 2023–2024 Kevin Lu
 // SPDX-Licence-Identifier: GPL-3.0-or-later
 // ==UserScript==
 // @name         Deck transfer for Yu-Gi-Oh! Master Duel and Neuron
@@ -8,7 +8,7 @@
 // @match        https://www.db.yugioh-card.com/yugiohdb/member_deck.action*
 // @match        *://*.ygoprodeck.com/*
 // @inject-into  content
-// @version      1.1.0
+// @version      1.2.0
 // @updateURL    https://dawnbrandbots.github.io/deck-transfer-for-master-duel/storm-access.user.js
 // ==/UserScript==
 
@@ -260,7 +260,9 @@ if (location.search.includes("ope=1")  ) {
             if (!deck) {
                 deck = await exportTypedDeck();
             }
-            ygoprodeckButton.href = `https://ygoprodeck.com/deckbuilder/?utm_source=storm-access&ydke=${toBase64(deck.main)}!${toBase64(deck.extra)}!${toBase64(deck.side)}!${encodeURIComponent(name)}`;
+            // https://github.com/FelixRilling/yugioh-deck-tool/issues/137#issuecomment-1697889917
+            const url = encodeURIComponent(`${toBase64(deck.main)}!${toBase64(deck.extra)}!${toBase64(deck.side)}!${name}`);
+            ygoprodeckButton.href = `https://ygoprodeck.com/deckbuilder/?utm_source=storm-access&y=${url}`;
             ygoprodeckButton.removeEventListener("click", ygoprodeckOnClick);
             ygoprodeckButton.click();
         }
@@ -363,60 +365,8 @@ function ydkToTypedDeck(ydk) {
 // ygoprodeck.js with different version string
     const signal = document.createElement("span");
     signal.id = "access-integration";
-    signal.dataset.version = "1.1.0-safari";
+    signal.dataset.version = "1.2.0-safari";
     signal.style.display = "none";
     document.body.appendChild(signal);
-
-    if (location.pathname === "/deckbuilder/") {
-        const params = new URLSearchParams(location.search);
-        const ydke = params.get("ydke");
-        if (ydke) {
-            const script = document.createElement("script");
-            script.text = `
-    (function () {
-        function inject() {
-            const start = location.search.indexOf("ydke=") + 5;
-            const end = location.search.indexOf("&", start);
-            const ydke = end === -1 ? location.search.slice(start) : location.search.slice(start, end);
-            const [main, extra, side, name] = ydke.split("!");
-            yugiohDeckToolApplication.setDeck({
-                name: decodeURIComponent(name),
-                parts: {
-                    main: [...toPasscodes(main)].map(c => ({ passcode: c + "" })),
-                    extra: [...toPasscodes(extra)].map(c => ({ passcode: c + "" })),
-                    side: [...toPasscodes(side)].map(c => ({ passcode: c + "" }))
-                }
-            });
-            function byte(c) { return c.charCodeAt(0); }
-            function toPasscodes(base64) {
-                return new Uint32Array(Uint8Array.from(atob(base64), byte).buffer)
-            }
-        }
-        const vueRoot = document.getElementById("deckToolApplication");
-        if (vueRoot) {
-            const observer = new MutationObserver((mutations, invoker) => {
-                for (const mutation of mutations) {
-                    if (mutation.type === "childList") {
-                        for (const node of mutation.addedNodes) {
-                            if (node.nodeName === "BUTTON") {
-                                invoker.disconnect();
-                                console.log("Storm Access: button mounted, Vue app API should be available, awaiting ready event");
-                                yugiohDeckToolApplication.on("ready", inject);
-                                return;
-                            }
-                        }
-                    }
-                }
-            });
-            console.log("Storm Access: register MutationObserver");
-            observer.observe(vueRoot.parentNode, { childList: true, subtree: true });
-        } else {
-            console.log("Storm Access: no #deckToolApplication, awaiting Vue app ready event");
-            yugiohDeckToolApplication.on("ready", inject);
-        }
-    })();`;
-            document.body.append(script);
-        }
-    }
 // end ygoprodeck.js
 }

@@ -125,7 +125,7 @@ See [PRIVACY.md](./PRIVACY.md).
 
 ## Licence
 
-Copyright (C) 2023 Kevin Lu. See [COPYING](./COPYING) for more details.
+Copyright (C) 2023–2024 Kevin Lu. See [COPYING](./COPYING) for more details.
 
 ```
 This program is free software: you can redistribute it and/or modify

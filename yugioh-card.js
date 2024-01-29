@@ -1,5 +1,5 @@
 // Deck transfer for Yu-Gi-Oh! Master Duel and Neuron
-// SPDX-FileCopyrightText: Copyright (C) 2023 Kevin Lu
+// SPDX-FileCopyrightText: Copyright (C) 2023–2024 Kevin Lu
 // SPDX-Licence-Identifier: GPL-3.0-or-later
 
 // Shared helpers
@@ -247,7 +247,9 @@ if (location.search.includes("ope=1")  ) {
             if (!deck) {
                 deck = await exportTypedDeck();
             }
-            ygoprodeckButton.href = `https://ygoprodeck.com/deckbuilder/?utm_source=storm-access&ydke=${toBase64(deck.main)}!${toBase64(deck.extra)}!${toBase64(deck.side)}!${encodeURIComponent(name)}`;
+            // https://github.com/FelixRilling/yugioh-deck-tool/issues/137#issuecomment-1697889917
+            const url = encodeURIComponent(`${toBase64(deck.main)}!${toBase64(deck.extra)}!${toBase64(deck.side)}!${name}`);
+            ygoprodeckButton.href = `https://ygoprodeck.com/deckbuilder/?utm_source=storm-access&y=${url}`;
             ygoprodeckButton.removeEventListener("click", ygoprodeckOnClick);
             ygoprodeckButton.click();
         }
