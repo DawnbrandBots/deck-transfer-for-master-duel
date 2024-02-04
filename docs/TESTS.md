@@ -136,13 +136,13 @@ The extension should be installed and enabled.
 
    **Then** a pop-up appears saying to log in first and try again, which can be closed by clicking "OK"
 
-1. **Given** the extension is enabled AND I am logged in to https://www.db.yugioh-card.com AND I copied a valid `ydke://` URL to my clipboard
+1. **Given** the extension is enabled AND I am logged in to https://www.db.yugioh-card.com
 
-   **When** I navigate to https://www.db.yugioh-card.com/yugiohdb/member_deck.action#storm-access
+   **When** I navigate to https://www.db.yugioh-card.com/yugiohdb/member_deck.action#storm-access=ENCODEDYDKEHERE (e.g. export from the YGOPRODECK builder to shareable link, then copy the part after `y=` and replace `ENCODEDYDKEHERE`)
 
    **Then** the website automatically navigates to the edit deck page AND the text boxes on the page are filled out with the contents of the deck on my clipboard AND I can freely edit or save the deck, and the saved deck is accurate to what is filled out on the page
 
-1. **Given** the extension is enabled AND I am logged in to https://www.db.yugioh-card.com AND I do not have a valid `ydke://` URL on my clipboard
+1. **Given** the extension is enabled AND I am logged in to https://www.db.yugioh-card.com
 
    **When** I navigate to https://www.db.yugioh-card.com/yugiohdb/member_deck.action#storm-access
 

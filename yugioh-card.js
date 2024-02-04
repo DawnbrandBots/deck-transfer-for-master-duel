@@ -162,8 +162,21 @@ if (location.search.includes("ope=2") && document.body.classList.contains("en"))
 
     // Final step of automatic import workflow. Load in the form fields and let the user evaluate whether to save.
     if (location.hash.includes("storm-access")) {
-        ydkeButton.click();
-        location.hash = "#" + ydkeButton.id;
+        (async () => {
+            try {
+                const parameter = decodeURIComponent(location.hash.split("#storm-access=")[1]);
+                console.log(parameter);
+                const { main, extra, side } = parseURL(`ydke://${parameter}`);
+                console.log(main);
+                console.log(extra);
+                console.log(side);
+                await loadTypedDeck(main, extra, side);
+                location.hash = "#" + ydkeButton.id;
+            } catch(e) {
+                console.error(e);
+                showModal(e.message);
+            }
+        })();
     }
 }
 
@@ -173,7 +186,7 @@ if (location.hash.includes("storm-access")) {
     if (document.head.querySelector("link[rel='alternate']")) {
         const myDeckHref = document.body.querySelector("a.menu_my_decks").href;
         if (myDeckHref.includes("cgid=")) {
-            location.href = myDeckHref + "#storm-access";
+            location.href = myDeckHref + location.hash;
         } else {
             createDialog()("You are not logged into Konami's official database. Please log in first and then try exporting again.");
         }
@@ -181,12 +194,12 @@ if (location.hash.includes("storm-access")) {
     // My Deck / Select Your Deck page
     if (location.search.includes("ope=4")) {
         const addDeckHref = document.getElementById("deck_recipe").nextElementSibling.href;
-        location.href = addDeckHref + "#storm-access";
+        location.href = addDeckHref + location.hash;
     }
     // My Deck / Select Your Deck page, after adding a new deck
     if (location.search.includes("ope=6")) {
         const newDeck = new URL(document.getElementsByClassName("link_value")[0].value, location.origin);
-        newDeck.hash = "#storm-access";
+        newDeck.hash = location.hash;
         newDeck.searchParams.set("request_locale", "en");
         // Convert view deck URL to edit deck
         newDeck.searchParams.set("ope", 2);
