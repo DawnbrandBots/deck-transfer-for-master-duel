@@ -116,6 +116,38 @@ The extension should be installed and enabled.
 
    **Then** the text boxes on the page are unchanged AND a pop-up appears with an error message, which can be closed by clicking "OK"
 
+## Streamlined import functional tests
+
+1. **Given** the extension is disabled or NOT installed
+
+   **When** I navigate to https://www.db.yugioh-card.com/yugiohdb/member_deck.action#storm-access
+
+   **Then** I see the official database home page and nothing happens
+
+1. **Given** the extension is enabled
+
+   **When** I navigate to https://www.db.yugioh-card.com/yugiohdb/#storm-access
+
+   **Then** I see the official database home page and nothing happens
+
+1. **Given** the extension is enabled and I am NOT logged in to https://www.db.yugioh-card.com
+
+   **When** I navigate to https://www.db.yugioh-card.com/yugiohdb/member_deck.action#storm-access
+
+   **Then** a pop-up appears saying to log in first and try again, which can be closed by clicking "OK"
+
+1. **Given** the extension is enabled AND I am logged in to https://www.db.yugioh-card.com AND I copied a valid `ydke://` URL to my clipboard
+
+   **When** I navigate to https://www.db.yugioh-card.com/yugiohdb/member_deck.action#storm-access
+
+   **Then** the website automatically navigates to the edit deck page AND the text boxes on the page are filled out with the contents of the deck on my clipboard AND I can freely edit or save the deck, and the saved deck is accurate to what is filled out on the page
+
+1. **Given** the extension is enabled AND I am logged in to https://www.db.yugioh-card.com AND I do not have a valid `ydke://` URL on my clipboard
+
+   **When** I navigate to https://www.db.yugioh-card.com/yugiohdb/member_deck.action#storm-access
+
+   **Then** the website automatically navigates to the edit deck page AND the text boxes on the page are blank AND a pop-up appears with an error message, which can be closed by clicking "OK"
+
 ## Export functional tests
 
 The extension should be installed and enabled. To view a public deck, navigate to [Deck Search](https://www.db.yugioh-card.com/yugiohdb/deck_search.action)

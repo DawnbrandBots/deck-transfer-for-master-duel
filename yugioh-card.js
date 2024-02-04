@@ -159,6 +159,41 @@ if (location.search.includes("ope=2") && document.body.classList.contains("en"))
             showModal(e.message);
         }
     });
+
+    // Final step of automatic import workflow. Load in the form fields and let the user evaluate whether to save.
+    if (location.hash.includes("storm-access")) {
+        ydkeButton.click();
+        location.hash = "#" + ydkeButton.id;
+    }
+}
+
+// Automatic import workflow
+if (location.hash.includes("storm-access")) {
+    // Home page
+    if (document.head.querySelector("link[rel='alternate']")) {
+        const myDeckHref = document.body.querySelector("a.menu_my_decks").href;
+        if (myDeckHref.includes("cgid=")) {
+            location.href = myDeckHref + "#storm-access";
+        } else {
+            createDialog()("You are not logged into Konami's official database. Please log in first and then try exporting again.");
+        }
+    }
+    // My Deck / Select Your Deck page
+    if (location.search.includes("ope=4")) {
+        const addDeckHref = document.getElementById("deck_recipe").nextElementSibling.href;
+        location.href = addDeckHref + "#storm-access";
+    }
+    // My Deck / Select Your Deck page, after adding a new deck
+    if (location.search.includes("ope=6")) {
+        const newDeck = new URL(document.getElementsByClassName("link_value")[0].value, location.origin);
+        newDeck.hash = "#storm-access";
+        newDeck.searchParams.set("request_locale", "en");
+        // Convert view deck URL to edit deck
+        newDeck.searchParams.set("ope", 2);
+        // Not required, but does not break if present
+        newDeck.searchParams.delete("ytkn");
+        location.href = newDeck;
+    }
 }
 // End deck import section
 
