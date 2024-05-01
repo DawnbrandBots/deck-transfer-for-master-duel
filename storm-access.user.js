@@ -416,5 +416,18 @@ function ydkToTypedDeck(ydk) {
     signal.dataset.version = "1.2.0-safari";
     signal.style.display = "none";
     document.body.appendChild(signal);
+
+    if (location.pathname.startsWith("/deck/")) {
+        const script = document.createElement("script");
+        script.text = `
+    window.addEventListener("load", () => {
+        const exportButton = document.getElementById("dropdownMenuButton").nextElementSibling.children[4];
+        exportButton.onclick = null;
+        exportButton.rel = "noopener";
+        exportButton.target = "_blank";
+        exportButton.href = "https://www.db.yugioh-card.com/yugiohdb/member_deck.action#storm-access=" + encodeURIComponent(createYdkeUri().slice(7));
+    });`;
+        document.body.append(script);
+    }
 // end ygoprodeck.js
 }

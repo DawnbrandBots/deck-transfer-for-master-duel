@@ -144,6 +144,12 @@ The extension should be installed and enabled.
 
 1. **Given** the extension is enabled AND I am logged in to https://www.db.yugioh-card.com
 
+   **When** I navigate to any deck page on YGOPRODECK, expand the "More" dropdown, and click "Export Master Duel/Neuron"
+
+   **Then** the official database opens in a new window or tab, then automatically navigates to the edit deck page AND the text boxes on the page are filled out with the contents of the deck on my clipboard AND I can freely edit or save the deck, and the saved deck is accurate to what is filled out on the page
+
+1. **Given** the extension is enabled AND I am logged in to https://www.db.yugioh-card.com
+
    **When** I navigate to https://www.db.yugioh-card.com/yugiohdb/member_deck.action#storm-access
 
    **Then** the website automatically navigates to the edit deck page AND the text boxes on the page are blank AND a pop-up appears with an error message, which can be closed by clicking "OK"
