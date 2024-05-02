@@ -1,0 +1,24 @@
+# SPDX-FileCopyrightText: © 2024 Kevin Lu
+# SPDX-Licence-Identifier: GPL-3.0-or-later
+name: Lint WebExtension
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: yarn --no-lockfile
+      - run: yarn web-ext lint
+      - run: yarn eslint '*.js'
