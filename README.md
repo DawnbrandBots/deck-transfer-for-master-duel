@@ -36,6 +36,9 @@ Master Duel and Neuron decks, and share directly to YGOPRODECK.
 **Note**: Opera approves extension updates slower than the Chrome Web Store so far. Opera users may receive new features
 and fixes faster by installing from the Chrome Web Store instead.
 
+[![Lint WebExtension](https://github.com/DawnbrandBots/deck-transfer-for-master-duel/actions/workflows/lint.yml/badge.svg)](https://github.com/DawnbrandBots/deck-transfer-for-master-duel/actions/workflows/lint.yml)
+[![Test WebExtension](https://github.com/DawnbrandBots/deck-transfer-for-master-duel/actions/workflows/test.yml/badge.svg)](https://github.com/DawnbrandBots/deck-transfer-for-master-duel/actions/workflows/test.yml)
+
 ## Importing
 
 <a href="https://www.youtube.com/watch?v=ImBRD6fM5Og&utm_source=github" title="Video demonstration">
