@@ -116,3 +116,9 @@ Thumbs.db
 *.db3
 *.db3-shm
 *.db3-wal
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/

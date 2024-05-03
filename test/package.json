@@ -1,0 +1,10 @@
+{
+  "name": "storm-access-test",
+  "version": "0.0.1",
+  "license": "GPL-3.0-or-later",
+  "private": true,
+  "devDependencies": {
+    "@playwright/test": "^1.43.1",
+    "@types/node": "^20.12.8"
+  }
+}
