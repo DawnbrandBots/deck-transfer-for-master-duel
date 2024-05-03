@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           mkdir -p _site
-          cp storm-access.user.js _site
+          cp src/storm-access.user.js _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
   deploy:

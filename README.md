@@ -1,4 +1,4 @@
-# ![Icon](./icon/48.png) Deck transfer for Yu-Gi-Oh! Master Duel and Neuron
+# ![Icon](./src/icon/48.png) Deck transfer for Yu-Gi-Oh! Master Duel and Neuron
 
 [
     ![Get the Firefox add-on](https://extensionworkshop.com/assets/img/documentation/publish/get-the-addon-178x60px.dad84b42.png)
