@@ -112,14 +112,15 @@ Compatible with both macOS and iOS, if Userscripts is supported!
 
 ## Installing on Android
 
-Unfortunately, most Android browsers do not support extensions.
+Firefox for Android supports browser extensions. Simply install from [Firefox add-ons](https://addons.mozilla.org/firefox/addon/deck-transfer-for-master-duel/?utm_source=github&utm_campaign=readme) like on desktop.
 
-Firefox Beta supports installing extensions beyond the recommended list. If you are interested,
+~~Firefox Beta supports installing extensions beyond the recommended list. If you are interested,
 you can follow the same instructions as [Indie Wiki Buddy](https://getindie.wiki/firefox-mobile/?utm_source=dawnbrand)
 to set up. You can either create your own collection or use
 collection owner [`17816848`](https://addons.mozilla.org/en-CA/firefox/collections/17816848/deck-transfer-for-master-duel/)
-and collection name `deck-transfer-for-master-duel`.
+and collection name `deck-transfer-for-master-duel`.~~
 
+Unfortunately, most other Android browsers do not support extensions.
 Kiwi Browser supports Chrome extensions, but I have not tested or used this browser.
 
 ## Privacy
