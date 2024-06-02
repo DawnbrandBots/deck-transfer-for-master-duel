@@ -13,5 +13,5 @@ test("Streamlined import functional test 3", async ({ page }) => {
   await page.getByRole("link", { name: " Export Master Duel/Neuron" }).click();
   const newPage = await tabOpen;
   await expect(newPage.url().startsWith("https://www.db.yugioh-card.com/yugiohdb/member_deck.action#storm-access=")).toBe(true);
-  await expect(newPage.locator("body")).toContainText("You are not logged into Konami's official database. Please log in first and then try exporting again.");
+  await expect(newPage.locator("dialog")).toContainText("You are not logged into Konami's official database. Please log in first and then try exporting again.");
 });
