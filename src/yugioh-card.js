@@ -36,7 +36,9 @@ async function loadTypedDeck(main, extra, side) {
     const passwords = new Set([...main, ...extra, ...side]);
     const parameter = [...passwords].join(",");
     console.log(parameter);
-    const response = await fetch(`https://db.ygoprodeck.com/api/v7/cardinfo.php?utm_source=storm-access&id=${parameter}`);
+    const response = await fetch(`https://db.ygoprodeck.com/api/v7/cardinfo.php?id=${parameter}`, {
+        headers: { "X-Requested-With": `storm-access/1.2.1` },
+    });
     const payload = await response.json();
     const cards = new Map();
     const types = new Map();
@@ -234,7 +236,9 @@ async function exportTypedDeck() {
     const ids = new Set([...deckKonamiIds.main, ...deckKonamiIds.extra, ...deckKonamiIds.side]);
     const parameter = [...ids].join(",");
     console.log(parameter);
-    const response = await fetch(`https://db.ygoprodeck.com/api/v7/cardinfo.php?utm_source=storm-access&misc=yes&konami_id=${parameter}`);
+    const response = await fetch(`https://db.ygoprodeck.com/api/v7/cardinfo.php?misc=yes&konami_id=${parameter}`, {
+        headers: { "X-Requested-With": `storm-access/1.2.1` },
+    });
     const payload = await response.json();
     const cards = new Map();
     for (const card of payload.data) {
