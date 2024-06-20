@@ -1,7 +1,17 @@
 import { resolve } from "path";
-import { test as base, chromium, type BrowserContext } from "@playwright/test";
+import { Page, test as base, chromium, type BrowserContext } from "@playwright/test";
 
-export const test = base.extend<{ context: BrowserContext }>({
+export const testNoExtension = base.extend<{ deckRecipePage: Page }>({
+    deckRecipePage: async ({ page }, use) => {
+        await page.goto("https://www.db.yugioh-card.com/yugiohdb/deck_search.action?request_locale=en");
+        const tabOpen = page.waitForEvent("popup");
+        await page.locator("a.inside").first().click();
+        const newPage = await tabOpen;
+        await use(newPage);
+    },
+});
+
+export const testWithExtension = testNoExtension.extend({
   context: async ({}, use) => {
     const pathToExtension = resolve(__dirname, "..", "src");
     const context = await chromium.launchPersistentContext("", {
@@ -16,5 +26,3 @@ export const test = base.extend<{ context: BrowserContext }>({
     await context.close();
   },
 });
-
-export const expect = test.expect;

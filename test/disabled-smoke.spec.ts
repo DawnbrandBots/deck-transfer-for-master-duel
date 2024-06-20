@@ -1,4 +1,6 @@
-import { test, expect } from "@playwright/test";
+import { testNoExtension as test } from "./fixtures";
+
+const expect = test.expect;
 
 test("Smoke test 1: YGOPRODECK extension page baseline", async ({ page }) => {
     await page.goto("https://ygoprodeck.com/decks/transfer-tool/");
@@ -8,12 +10,8 @@ test("Smoke test 1: YGOPRODECK extension page baseline", async ({ page }) => {
     await expect(body).toContainText("Extension Not Detected");
 });
 
-test("Smoke test: EN Konami deck recipe page baseline (like 2, opposite 6)", async ({ page }) => {
-    await page.goto("https://www.db.yugioh-card.com/yugiohdb/deck_search.action?request_locale=en");
-    const tabOpen = page.waitForEvent("popup");
-    await page.locator("a.inside").first().click();
-    const newPage = await tabOpen;
-    const body = newPage.locator("body");
+test("Smoke test: EN Konami deck recipe page baseline (like 2, opposite 6)", async ({ deckRecipePage }) => {
+    const body = deckRecipePage.locator("body");
     await expect(body).not.toContainText("Export YDK");
     await expect(body).not.toContainText("Export to YGOPRODECK");
 });
