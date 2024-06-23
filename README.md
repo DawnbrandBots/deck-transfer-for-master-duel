@@ -41,9 +41,11 @@ and fixes faster by installing from the Chrome Web Store instead.
 
 ## Importing
 
-<a href="https://www.youtube.com/watch?v=ImBRD6fM5Og&utm_source=github" title="Video demonstration">
-    <img width="100%" src="https://markdown-videos.deta.dev/youtube/ImBRD6fM5Og" alt="Video demonstration" />
-</a>
+<details>
+    <summary>Video demonstration</summary>
+
+[![Video demonstration](https://img.youtube.com/vi/ImBRD6fM5Og/hqdefault.jpg)](https://www.youtube.com/watch?v=ImBRD6fM5Og&utm_source=github "Video demonstration")
+</details>
 
 <!-- alternative thumbnail: https://yt-embed.live/embed?v=ImBRD6fM5Og -->
 
