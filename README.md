@@ -6,13 +6,13 @@
 [
     ![Available in the Chrome Web Store](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png)
 ](https://chrome.google.com/webstore/detail/lgcpomfflpfipndmldmgblhpbnnfidgk?utm_source=github&utm_campaign=readme "Get the Chromium add-on")
-<a href="https://addons.opera.com/extensions/details/deck-transfer-for-yu-gi-oh-master-duel-and-neuron/?utm_source=github&utm_campaign=readme" title="Get the Opera add-on">
-    <img height="58" src="https://dev.opera.com/extensions/branding-guidelines/addons_206x58_en@2x.png" alt="Get it from Opera add-ons" />
-</a>
-
 
 <a href="https://chrome.google.com/webstore/detail/lgcpomfflpfipndmldmgblhpbnnfidgk?utm_source=github&utm_campaign=readme-edge" title="Install for Microsoft Edge from the Chrome Web Store">
     <img height="64" src="https://raw.githubusercontent.com/MicrosoftEdge/Demos/9e91627ea7f13d7275b9c11d94322ecfaf5d6d28/shared/img/logo1024.png" alt="Microsoft Edge" />
+</a>
+&nbsp;
+<a href="https://chrome.google.com/webstore/detail/lgcpomfflpfipndmldmgblhpbnnfidgk?utm_source=github&utm_campaign=readme-opera" title="Install for Opera from the Chrome Web Store">
+    <img height="64" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Opera_2015_icon.svg/240px-Opera_2015_icon.svg.png" alt="Opera" />
 </a>
 &nbsp;
 <a href="#installing-on-safari" title="Install on Safari">
@@ -33,8 +33,8 @@ and [Neuron duel assistant phone app](https://www.konami.com/yugioh/neuron/en/).
 You can also [download any deck](#downloading-public-decks) from the official card database, including your
 Master Duel and Neuron decks, and share directly to YGOPRODECK.
 
-**Note**: Opera approves extension updates slower than the Chrome Web Store so far. Opera users may receive new features
-and fixes faster by installing from the Chrome Web Store instead.
+**Note**: the Opera add-ons listing is deprecated due to slow moderation of extension updates. Opera users should install
+from the Chrome Web Store instead like other Chromium browsers to receive the latest features and fixes.
 
 [![Lint WebExtension](https://github.com/DawnbrandBots/deck-transfer-for-master-duel/actions/workflows/lint.yml/badge.svg)](https://github.com/DawnbrandBots/deck-transfer-for-master-duel/actions/workflows/lint.yml)
 [![Test WebExtension](https://github.com/DawnbrandBots/deck-transfer-for-master-duel/actions/workflows/test.yml/badge.svg)](https://github.com/DawnbrandBots/deck-transfer-for-master-duel/actions/workflows/test.yml)
