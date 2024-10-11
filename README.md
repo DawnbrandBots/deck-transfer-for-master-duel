@@ -39,6 +39,14 @@ from the Chrome Web Store instead like other Chromium browsers to receive the la
 [![Lint WebExtension](https://github.com/DawnbrandBots/deck-transfer-for-master-duel/actions/workflows/lint.yml/badge.svg)](https://github.com/DawnbrandBots/deck-transfer-for-master-duel/actions/workflows/lint.yml)
 [![Test WebExtension](https://github.com/DawnbrandBots/deck-transfer-for-master-duel/actions/workflows/test.yml/badge.svg)](https://github.com/DawnbrandBots/deck-transfer-for-master-duel/actions/workflows/test.yml)
 
+![AMO version](https://img.shields.io/amo/v/deck-transfer-for-master-duel?color=E66000&label=Version%20for%20Firefox&logo=firefoxbrowser)
+![AMO downloads](https://img.shields.io/amo/users/deck-transfer-for-master-duel?color=E66000&label=Downloads&logo=firefoxbrowser)
+![AMO user rating](https://img.shields.io/amo/stars/deck-transfer-for-master-duel?color=E66000&label=Rating&logo=firefoxbrowser)
+
+![Chrome Web Store version](https://img.shields.io/chrome-web-store/v/lgcpomfflpfipndmldmgblhpbnnfidgk?color=EA4335&label=Version%20for%20Chromium&logo=chromewebstore)
+![Chrome Web Store downloads](https://img.shields.io/chrome-web-store/users/lgcpomfflpfipndmldmgblhpbnnfidgk?color=EA4335&label=Downloads&logo=chromewebstore)
+![Chrome Web Store user rating](https://img.shields.io/chrome-web-store/stars/lgcpomfflpfipndmldmgblhpbnnfidgk?color=EA4335&label=Rating&logo=chromewebstore)
+
 ## Importing
 
 <details>
