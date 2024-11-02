@@ -8,7 +8,7 @@
 // @match        https://www.db.yugioh-card.com/yugiohdb/member_deck.action*
 // @match        *://*.ygoprodeck.com/*
 // @inject-into  content
-// @version      1.2.0
+// @version      1.2.1
 // @updateURL    https://dawnbrandbots.github.io/deck-transfer-for-master-duel/storm-access.user.js
 // ==/UserScript==
 
@@ -254,9 +254,9 @@ async function exportTypedDeck() {
         cards.set(card.misc_info[0].konami_id, card.id);
     }
     const deckPasswords = {
-        main: deckKonamiIds.main.map(kid => cards.get(kid)),
-        extra: deckKonamiIds.extra.map(kid => cards.get(kid)),
-        side: deckKonamiIds.side.map(kid => cards.get(kid))
+        main: deckKonamiIds.main.map(kid => cards.get(kid)).filter(password => !!password),
+        extra: deckKonamiIds.extra.map(kid => cards.get(kid)).filter(password => !!password),
+        side: deckKonamiIds.side.map(kid => cards.get(kid)).filter(password => !!password)
     };
     console.log(deckPasswords);
     return deckPasswords;
@@ -413,7 +413,7 @@ function ydkToTypedDeck(ydk) {
 // ygoprodeck.js with different version string
     const signal = document.createElement("span");
     signal.id = "access-integration";
-    signal.dataset.version = "1.2.0-safari";
+    signal.dataset.version = "1.2.1-safari";
     signal.style.display = "none";
     document.body.appendChild(signal);
 

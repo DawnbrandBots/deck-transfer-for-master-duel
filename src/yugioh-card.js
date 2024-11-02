@@ -241,9 +241,9 @@ async function exportTypedDeck() {
         cards.set(card.misc_info[0].konami_id, card.id);
     }
     const deckPasswords = {
-        main: deckKonamiIds.main.map(kid => cards.get(kid)),
-        extra: deckKonamiIds.extra.map(kid => cards.get(kid)),
-        side: deckKonamiIds.side.map(kid => cards.get(kid))
+        main: deckKonamiIds.main.map(kid => cards.get(kid)).filter(password => !!password),
+        extra: deckKonamiIds.extra.map(kid => cards.get(kid)).filter(password => !!password),
+        side: deckKonamiIds.side.map(kid => cards.get(kid)).filter(password => !!password)
     };
     console.log(deckPasswords);
     return deckPasswords;
