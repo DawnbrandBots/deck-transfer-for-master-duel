@@ -2,28 +2,16 @@
 
 <!-- https://extensionworkshop.com/assets/img/documentation/publish/get-the-addon-178x60px.dad84b42.png -->
 <!-- The following two images are from https://github.com/gorhill/uBlock -->
-[
-    ![Get the Firefox add-on](https://user-images.githubusercontent.com/585534/107280546-7b9b2a00-6a26-11eb-8f9f-f95932f4bfec.png)
-](https://addons.mozilla.org/firefox/addon/deck-transfer-for-master-duel/?utm_source=github&utm_campaign=readme "Get the Firefox add-on")
-[
-    ![Available in the Chrome Web Store](https://user-images.githubusercontent.com/585534/107280622-91a8ea80-6a26-11eb-8d07-77c548b28665.png)
-](https://chrome.google.com/webstore/detail/lgcpomfflpfipndmldmgblhpbnnfidgk?utm_source=github&utm_campaign=readme "Get the Chromium add-on")
+[![Get the Firefox add-on](https://user-images.githubusercontent.com/585534/107280546-7b9b2a00-6a26-11eb-8f9f-f95932f4bfec.png)](https://addons.mozilla.org/firefox/addon/deck-transfer-for-master-duel/?utm_source=github&utm_campaign=readme "Get the Firefox add-on")
+[![Available in the Chrome Web Store](https://user-images.githubusercontent.com/585534/107280622-91a8ea80-6a26-11eb-8d07-77c548b28665.png)](https://chrome.google.com/webstore/detail/lgcpomfflpfipndmldmgblhpbnnfidgk?utm_source=github&utm_campaign=readme "Get the Chromium add-on")
 
-<a href="https://chrome.google.com/webstore/detail/lgcpomfflpfipndmldmgblhpbnnfidgk?utm_source=github&utm_campaign=readme-edge" title="Install for Microsoft Edge from the Chrome Web Store">
-    <img height="64" src="https://raw.githubusercontent.com/MicrosoftEdge/Demos/9e91627ea7f13d7275b9c11d94322ecfaf5d6d28/shared/img/logo1024.png" alt="Microsoft Edge" />
-</a>
+<a href="https://chrome.google.com/webstore/detail/lgcpomfflpfipndmldmgblhpbnnfidgk?utm_source=github&utm_campaign=readme-edge" title="Install for Microsoft Edge from the Chrome Web Store"><img height="64" src="https://raw.githubusercontent.com/MicrosoftEdge/Demos/9e91627ea7f13d7275b9c11d94322ecfaf5d6d28/shared/img/logo1024.png" alt="Microsoft Edge" /></a>
 &nbsp;
-<a href="https://chrome.google.com/webstore/detail/lgcpomfflpfipndmldmgblhpbnnfidgk?utm_source=github&utm_campaign=readme-opera" title="Install for Opera from the Chrome Web Store">
-    <img height="64" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Opera_2015_icon.svg/240px-Opera_2015_icon.svg.png" alt="Opera" />
-</a>
+<a href="https://chrome.google.com/webstore/detail/lgcpomfflpfipndmldmgblhpbnnfidgk?utm_source=github&utm_campaign=readme-opera" title="Install for Opera from the Chrome Web Store"><img height="64" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Opera_2015_icon.svg/240px-Opera_2015_icon.svg.png" alt="Opera" /></a>
 &nbsp;
-<a href="#installing-on-safari" title="Install on Safari">
-    <img height="64" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Safari_browser_logo.svg/234px-Safari_browser_logo.svg.png" alt="Safari" />
-</a>
+<a href="#installing-on-safari" title="Install on Safari"><img height="64" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Safari_browser_logo.svg/234px-Safari_browser_logo.svg.png" alt="Safari" /></a>
 &nbsp;
-<a href="#installing-on-android" title="Install on Android">
-    <img height="64" src="https://developer.android.com/static/images/brand/Android_Robot.png" alt="Android" />
-</a>
+<a href="#installing-on-android" title="Install on Android"><img height="64" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Android_Logo_2014_-_2019.svg/480px-Android_Logo_2014_-_2019.svg.png" alt="Android" /></a>
 
 [Import](#importing) and [export](#exporting) Yu-Gi-Oh! decks from Master Duel and Neuron in YDK format and YDKE URLs via Konami's official card database.
 Directly import decks from [YGOPRODECK](https://ygoprodeck.com) and other communities.
