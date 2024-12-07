@@ -49,13 +49,11 @@ async function loadTypedDeck(main, extra, side) {
     const passwords = new Set([...main, ...extra, ...side]);
     const parameter = [...passwords].join(",");
     console.log(parameter);
-    const response = await fetch(`https://db.ygoprodeck.com/api/v7/cardinfo.php?utm_source=storm-access&id=${parameter}`);
+    const response = await fetch(`https://db.ygoprodeck.com/api/v7/cardinfo.php?utm_source=storm-access&misc=yes&id=${parameter}`);
     const payload = await response.json();
     const cards = new Map();
-    const types = new Map();
     for (const card of payload.data) {
-        cards.set(card.id, card.name);
-        types.set(card.id, card.type);
+        cards.set(card.id, card);
     }
     const deck = {
         monster: {},
@@ -64,38 +62,61 @@ async function loadTypedDeck(main, extra, side) {
         extra: {},
         side: {}
     };
+    const deckKonamiIds = {
+        monster: {},
+        spell: {},
+        trap: {},
+        extra: {},
+        side: {}
+    };
     for (const password of main) {
-        const name = cards.get(password);
-        const type = types.get(password);
+        const name = cards.get(password).name;
+        const type = cards.get(password).type;
+        const konamiId =  cards.get(password).misc_info[0].konami_id;
         if (type === "Spell Card") {
             deck.spell[name] = (deck.spell[name] || 0) + 1;
+            deckKonamiIds.spell[name] = konamiId;
         } else if (type === "Trap Card") {
             deck.trap[name] = (deck.trap[name] || 0) + 1;
+            deckKonamiIds.trap[name] = konamiId;
         } else {
             deck.monster[name] = (deck.monster[name] || 0) + 1;
+            deckKonamiIds.monster[name] = konamiId;
         }
     }
     for (const password of extra) {
-        const name = cards.get(password);
+        const name = cards.get(password).name;
+        const konamiId =  cards.get(password).misc_info[0].konami_id;
         deck.extra[name] = (deck.extra[name] || 0) + 1;
+        deckKonamiIds.extra[name] = konamiId;
     }
     for (const password of side) {
-        const name = cards.get(password);
+        const name = cards.get(password).name;
+        const konamiId =  cards.get(password).misc_info[0].konami_id;
         deck.side[name] = (deck.side[name] || 0) + 1;
+        deckKonamiIds.side[name] = konamiId;
     }
     console.log(deck);
+    console.log(deckKonamiIds);
     function load(key) {
         const prefix = key.slice(0, 2);
         let i = 1;
         for (const name in deck[key]) {
             document.getElementById(`${prefix}nm_${i}`).value = name;
             document.getElementById(`${prefix}num_${i}`).value = deck[key][name];
+            const konamiId = deckKonamiIds[key][name];
+            if (konamiId) {
+                document.getElementsByName(`${key}CardId`)[i - 1].value = deckKonamiIds[key][name];
+                document.getElementById(`imgs_${prefix}_${i}`).value = `${deckKonamiIds[key][name]}_1_1_1`;
+            }
             i++;
         }
         let max = key === "extra" || key === "side" ? 20 : 65;
         while (i <= max) {
             document.getElementById(`${prefix}nm_${i}`).value = "";
             document.getElementById(`${prefix}num_${i}`).value = "";
+            document.getElementsByName(`${key}CardId`)[i - 1].value = "";
+            document.getElementById(`imgs_${prefix}_${i}`).value = "null_null_null_null";
             i++;
         }
     }
