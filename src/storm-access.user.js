@@ -72,7 +72,22 @@ async function loadTypedDeck(main, extra, side) {
     for (const password of main) {
         const name = cards.get(password).name;
         const type = cards.get(password).type;
-        const konamiId =  cards.get(password).misc_info[0].konami_id;
+        let konamiId = cards.get(password).misc_info[0].konami_id;
+        if (!konamiId) {
+            // This is the authenticated API called on the page when you type into a text box
+            const response = await fetch("https://www.db.yugioh-card.com/yugiohdb/member_deck_card_search.action", {
+                method: "POST",
+                body: `srclang=en&keyword=${encodeURIComponent(name)}`,
+                headers: {
+                    // Required to get JSON behaviour from this endpoint
+                    "X-Requested-With": "XMLHttpRequest"
+                }
+            });
+            const data = await response.json();
+            if (data.result && data.list.length) {
+                konamiId = data.list[0].card_id;
+            }
+        }
         if (type === "Spell Card") {
             deck.spell[name] = (deck.spell[name] || 0) + 1;
             deckKonamiIds.spell[name] = konamiId;
