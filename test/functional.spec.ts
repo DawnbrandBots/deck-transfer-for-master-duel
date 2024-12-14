@@ -31,7 +31,7 @@ test("Export functional test 3: YGOPRODECK from recent deck recipe", async ({ de
     await deckRecipePage.locator('#btn_ygoprodeck').click();
     const newPage = await tabOpen;
     const title = await deckRecipePage.locator("#broad_title").innerText();
-    await expect(newPage.getByLabel("Deck Name")).toHaveValue(title.trim(), { timeout: 10000 });
+    await expect(newPage.getByLabel("Deck Name")).toHaveValue(title.trim(), { timeout: 20000 });
     // This should be just [456], but due to https://github.com/DawnbrandBots/deck-transfer-for-master-duel/issues/18
     // we often encounter decks for which the YGOPRODECK API is missing the Konami IDs
     await expect(newPage.locator("small:below(:text('Main Deck'))").first()).toHaveText(/[123456]\d Cards/);
@@ -43,7 +43,7 @@ test("Streamlined import functional test 3", async ({ page }) => {
   await page.goto("https://ygoprodeck.com/");
   await page.getByRole("link", { name: " " }).click();
   await page.getByRole("link", { name: " Random Deck" }).click();
-  await page.getByRole("button", { name: "More..." }).click();
+  await page.getByRole("button", { name: "More..." }).click({ force: true });
   const tabOpen = page.waitForEvent("popup");
   await page.getByRole("link", { name: " Export Master Duel/Neuron" }).click();
   const newPage = await tabOpen;
