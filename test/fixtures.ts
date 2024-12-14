@@ -1,5 +1,5 @@
 import { resolve } from "path";
-import { Page, test as base, chromium, type BrowserContext } from "@playwright/test";
+import { Page, test as base, chromium } from "@playwright/test";
 
 export const testNoExtension = base.extend<{ deckRecipePage: Page }>({
     deckRecipePage: async ({ page }, use) => {
@@ -7,6 +7,7 @@ export const testNoExtension = base.extend<{ deckRecipePage: Page }>({
         const tabOpen = page.waitForEvent("popup");
         await page.locator("a.inside").first().click();
         const newPage = await tabOpen;
+        console.log(newPage.url());
         await use(newPage);
     },
 });

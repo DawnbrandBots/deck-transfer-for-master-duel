@@ -288,7 +288,7 @@ async function exportTypedDeck() {
 // View deck page
 if (location.search.includes("ope=1")  ) {
     (function () {
-        const name = document.querySelector("#broad_title h1").firstChild.textContent.split("\t\t\t").pop();
+        const name = document.querySelector("#broad_title h1").textContent.trim();
         // Cache the deck representation so only one API request is needed and later button presses are more responsive
         let deck;
 
