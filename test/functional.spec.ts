@@ -43,7 +43,9 @@ test("Streamlined import functional test 3", async ({ page }) => {
   await page.goto("https://ygoprodeck.com/");
   await page.getByRole("link", { name: " " }).click();
   await page.getByRole("link", { name: " Random Deck" }).click();
-  await page.getByRole("button", { name: "More..." }).click({ force: true });
+  await page.waitForURL("https://ygoprodeck.com/deck/**");
+  console.log(page.url());
+  await page.getByRole("button", { name: "More..." }).click();
   const tabOpen = page.waitForEvent("popup");
   await page.getByRole("link", { name: " Export Master Duel/Neuron" }).click();
   const newPage = await tabOpen;
