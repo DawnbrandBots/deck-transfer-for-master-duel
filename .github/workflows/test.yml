@@ -34,7 +34,7 @@ jobs:
       with:
         node-version: 20
     - run: yarn --no-lockfile
-    - run: yarn playwright install --with-deps
+    - run: yarn playwright install --with-deps chromium
     - run: yarn playwright test
     - uses: actions/upload-artifact@v4
       if: success() || failure()
