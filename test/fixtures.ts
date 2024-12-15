@@ -12,18 +12,26 @@ export const testNoExtension = base.extend<{ deckRecipePage: Page }>({
     },
 });
 
-export const testWithExtension = testNoExtension.extend({
-  context: async ({}, use) => {
-    const pathToExtension = resolve(__dirname, "..", "src");
-    const context = await chromium.launchPersistentContext("", {
-      headless: false,
-      args: [
-        "--headless=new", // not officially supported!
-        `--disable-extensions-except=${pathToExtension}`,
-        `--load-extension=${pathToExtension}`,
-      ],
-    });
-    await use(context);
-    await context.close();
-  },
+export const testWithExtension = testNoExtension.extend<{ ygoprodeckPage: Page }>({
+    context: async ({}, use) => {
+        const pathToExtension = resolve(__dirname, "..", "src");
+        const context = await chromium.launchPersistentContext("", {
+            headless: false,
+            args: [
+                "--headless=new", // not officially supported!
+                `--disable-extensions-except=${pathToExtension}`,
+                `--load-extension=${pathToExtension}`,
+            ],
+        });
+        await use(context);
+        await context.close();
+    },
+    ygoprodeckPage: async ({ page }, use) => {
+        await page.goto("https://ygoprodeck.com/");
+        await page.getByRole("link", { name: " " }).click();
+        await page.getByRole("link", { name: " Random Deck" }).click();
+        await page.waitForURL("https://ygoprodeck.com/deck/**");
+        console.log(page.url());
+        await use(page);
+    },
 });
