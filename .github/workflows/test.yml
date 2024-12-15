@@ -36,6 +36,10 @@ jobs:
     - run: yarn --no-lockfile
     - run: yarn playwright install --with-deps chromium
     - run: yarn playwright test
+      env:
+        KONAMI_JSESSIONID: ${{ secrets.KONAMI_JSESSIONID }}
+        KONAMI_CGID: ${{ secrets.KONAMI_CGID }}
+        KONAMI_LT: ${{ secrets.KONAMI_LT }}
     - uses: actions/upload-artifact@v4
       if: success() || failure()
       with:
