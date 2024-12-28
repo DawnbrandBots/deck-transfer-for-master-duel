@@ -79,7 +79,7 @@ test.afterAll(async ({ page: deckListPage }) => {
         const newPage = await tabOpen;
         deckListPage.close();
         newPage.once("dialog", async (dialog) => {
-            console.log(`Dialog message: ${dialog.message()}`);
+            console.log(`Dialog message: ${dialog.message()}`, newPage.url());
             await dialog.accept();
         });
         await newPage.locator("a").filter({ hasText: "Delete" }).click();

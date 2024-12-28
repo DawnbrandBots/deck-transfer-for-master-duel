@@ -2,12 +2,12 @@ import { resolve } from "path";
 import { Page, test as base, chromium } from "@playwright/test";
 
 export const testNoExtension = base.extend<{ deckRecipePage: Page }>({
-    deckRecipePage: async ({ page }, use) => {
+    deckRecipePage: async ({ page }, use, testInfo) => {
         await page.goto("https://www.db.yugioh-card.com/yugiohdb/deck_search.action?request_locale=en");
         const tabOpen = page.waitForEvent("popup");
         await page.locator("a.inside").first().click();
         const newPage = await tabOpen;
-        console.log(newPage.url());
+        console.log(testInfo.title, testInfo.retry, newPage.url());
         await use(newPage);
     },
 });
@@ -26,12 +26,12 @@ export const testWithExtension = testNoExtension.extend<{ ygoprodeckPage: Page }
         await use(context);
         await context.close();
     },
-    ygoprodeckPage: async ({ page }, use) => {
+    ygoprodeckPage: async ({ page }, use, testInfo) => {
         await page.goto("https://ygoprodeck.com/");
         await page.getByRole("link", { name: " " }).click();
         await page.getByRole("link", { name: " Random Deck" }).click();
         await page.waitForURL("https://ygoprodeck.com/deck/**");
-        console.log(page.url());
+        console.log(testInfo.title, testInfo.retry, page.url());
         await use(page);
     },
 });
