@@ -21,6 +21,8 @@ export const testWithExtension = testNoExtension.extend<{ ygoprodeckPage: Page }
                 "--headless=new", // not officially supported!
                 `--disable-extensions-except=${pathToExtension}`,
                 `--load-extension=${pathToExtension}`,
+                // https://github.com/ungoogled-software/ungoogled-chromium/issues/662#issuecomment-3013111113
+                "--disable-features=ExtensionManifestV2Unsupported,ExtensionManifestV2Disabled", // Still works in Chrome 140
             ],
         });
         await use(context);
