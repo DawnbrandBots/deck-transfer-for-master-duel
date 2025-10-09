@@ -30,8 +30,8 @@ export const testWithExtension = testNoExtension.extend<{ ygoprodeckPage: Page }
     },
     ygoprodeckPage: async ({ page }, use, testInfo) => {
         await page.goto("https://ygoprodeck.com/");
-        await page.getByRole("link", { name: " " }).click();
-        await page.getByRole("link", { name: " Random Deck" }).click();
+        await page.locator("#navbarDropdownMenuLink").click();
+        await page.getByRole("link", { name: "Random Deck" }).click();
         await page.waitForURL("https://ygoprodeck.com/deck/**");
         console.log(testInfo.title, testInfo.retry, page.url());
         await use(page);
