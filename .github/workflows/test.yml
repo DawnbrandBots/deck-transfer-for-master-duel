@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: © 2024 Kevin Lu
+# SPDX-FileCopyrightText: © 2024–2025 Kevin Lu
 # SPDX-Licence-Identifier: GPL-3.0-or-later
 name: Test WebExtension
 on:
@@ -24,7 +24,7 @@ jobs:
           - ubuntu-24.04-arm
           - windows-latest
           - macos-latest
-          - macos-13
+          - macos-15-intel
     runs-on: ${{ matrix.os }}
     defaults:
       run:
