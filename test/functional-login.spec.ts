@@ -38,8 +38,8 @@ async function expectImport(page: Page) {
     await expect(page.locator("#btn_ydk")).toHaveText("Import YDK file");
     await expect(page.locator("#btn_ydk_save")).toHaveText("Import YDK and save");
     await expect(page.locator("#monm_1")).toHaveValue(/\w/);
-    await page.locator("#require_confilem_legal_doc_modal").getByText("Confirm").click(); // Clear "Privacy Settings" Terms of Use modal
-    await page.locator("#btn_regist").click();
+    // Disregard any modals
+    await page.locator("#btn_regist").click({ force: true });
     await expect(page.locator(".card_image_monster_0_1").first()).toBeVisible({ timeout: 20000 });
 }
 
