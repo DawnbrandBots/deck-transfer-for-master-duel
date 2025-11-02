@@ -39,11 +39,7 @@ test("Export functional test 3: YGOPRODECK from recent deck recipe", async ({ de
     expect(parseFloat(priceBadge.split("$")[1])).toBeGreaterThan(0);
 });
 
-test("Streamlined import functional test 3", async ({ ygoprodeckPage }) => {
-  await ygoprodeckPage.getByRole("button", { name: "More..." }).click();
-  const tabOpen = ygoprodeckPage.waitForEvent("popup");
-  await ygoprodeckPage.getByRole("link", { name: "Export Master Duel/Neuron" }).click();
-  const newPage = await tabOpen;
-  await expect(newPage.url().startsWith("https://www.db.yugioh-card.com/yugiohdb/member_deck.action#storm-access=")).toBe(true);
-  await expect(newPage.locator("dialog")).toContainText("You are not logged into Konami's official database. Please log in first and then try exporting again.", { timeout: 10000 });
+test("Streamlined import functional test 3", async ({ ygoprodeckExport }) => {
+  await expect(ygoprodeckExport.url().startsWith("https://www.db.yugioh-card.com/yugiohdb/member_deck.action#storm-access=")).toBe(true);
+  await expect(ygoprodeckExport.locator("dialog")).toContainText("You are not logged into Konami's official database. Please log in first and then try exporting again.", { timeout: 10000 });
 });

@@ -12,7 +12,7 @@ export const testNoExtension = base.extend<{ deckRecipePage: Page }>({
     },
 });
 
-export const testWithExtension = testNoExtension.extend<{ ygoprodeckPage: Page }>({
+export const testWithExtension = testNoExtension.extend<{ ygoprodeckPage: Page, ygoprodeckExport: Page }>({
     context: async ({}, use) => {
         const pathToExtension = resolve(__dirname, "..", "src");
         const context = await chromium.launchPersistentContext("", {
@@ -35,5 +35,12 @@ export const testWithExtension = testNoExtension.extend<{ ygoprodeckPage: Page }
         await page.waitForURL("https://ygoprodeck.com/deck/**");
         console.log(testInfo.title, testInfo.retry, page.url());
         await use(page);
+    },
+    ygoprodeckExport: async ({ ygoprodeckPage }, use) => {
+        await ygoprodeckPage.getByRole("button", { name: "More..." }).click();
+        const tabOpen = ygoprodeckPage.waitForEvent("popup");
+        await ygoprodeckPage.getByRole("link", { name: "Export Master Duel/Neuron" }).click();
+        const newPage = await tabOpen;
+        await use(newPage);
     },
 });
